@@ -1,0 +1,20 @@
+<p>
+  <strong>Текст:</strong>
+  <%= @card.original_text %>
+</p>
+ 
+<p>
+  <strong>Перевод:</strong>
+  <%= @card.translated_text %>
+</p>
+
+<p>
+  <strong>Дата ревью:</strong>
+  <%= @card.review_date %>
+</p>
+
+<%= link_to 'К списку карточек', cards_path, class: 'btn btn-primary' %>
+<%= link_to 'Изменить', edit_card_path(@card), class: 'btn btn-primary' %>
+<%= link_to 'Удалить', card_path(@card),
+              method: :delete,
+              data: { confirm: 'Вы уверены?' }, class: 'btn btn-primary' %>
