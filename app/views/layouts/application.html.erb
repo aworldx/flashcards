@@ -12,10 +12,10 @@
 
     <ul class="nav justify-content-center">
       <li class="nav-item">
-        <a class="nav-link active" href="#">Флэшкарточкер</a>
+        <%= link_to 'Флэшкарточкер', root_path, class: 'nav-link active' %>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Link1</a>
+        <%= link_to 'Все карточки', cards_path, class: 'nav-link' %>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Link2</a>
@@ -27,8 +27,8 @@
       <header class="clearfix">
         <h1>Флэшкарточкер</h1>
         <ul class="navigation-links">
-          <li><a href="#">Все карточки</a></li>
-          <li><a href="#">Добавить карточку</a></li>
+          <li><%= link_to 'Все карточки', cards_path %></li>
+          <li><%= link_to 'Добавить карточку', '' %></li>
         </ul>
       </header>
 
