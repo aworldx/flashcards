@@ -1,14 +1,24 @@
 <h3>Все карточки</h3>
 <% @cards.each_slice(4) do |cards_row| %>
-  <div class="row mb-1">
+  <div class="row mb-2">
     <% cards_row.each do |card| %>
       <div class="col">
         <div class="card">
-          <div class="card-body">
-            <%= card.original_text %>  
+          <h5 class="card-header">
+            <%= card.original_text %>
+          </h5>
+          <div class="card-body">            
+            <%= card.translated_text %>  
+            <p>
+              <%= card.review_date.strftime("%m/%d/%Y") %>
+            </p>
           </div>
           <div class="card-footer text-muted">
-            <%= card.review_date.strftime("%m/%d/%Y") %>
+            <%= link_to 'Открыть', card_path(card) %>
+            <%= link_to 'Изменить', edit_card_path(card) %>
+            <%= link_to 'Удалить', card_path(card),
+              method: :delete,
+              data: { confirm: 'Вы уверены?' } %>
           </div>
         </div>
       </div>

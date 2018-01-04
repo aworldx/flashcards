@@ -1,0 +1,6 @@
+<%= simple_form_for @card, html: { class: 'form-horizontal' } do |f| %>
+  <%= f.input :original_text, label: 'Текст' %>
+  <%= f.input :translated_text, label: 'Перевод' %>
+  <%= f.input :review_date, label: 'Дата ревью' %>
+  <%= f.button :submit, 'Сохранить', class: "btn btn-primary" %>
+<% end %>
