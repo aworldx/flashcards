@@ -8,7 +8,7 @@ class Card < ApplicationRecord
 
   def self.check_translate(card_id, user_text)
     card = Card.find_by_id(card_id)
-    if card[:original_text].casecmp(user_text)
+    if card[:original_text].casecmp(user_text) == 0
       card.set_review_date
       card.save
       return true
