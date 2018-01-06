@@ -39,11 +39,7 @@ class CardsController < ApplicationController
     redirect_to cards_path
   end
 
-  # move this action here from home controller 
   def check
-
-    puts '34324 ' + params.inspect
-    # earlier init card code was in Model class
     card = Card.find_by_id(params[:id])
 
     if card.check_translate(params[:user_type][:user_text])
