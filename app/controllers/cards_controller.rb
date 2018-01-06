@@ -39,12 +39,27 @@ class CardsController < ApplicationController
     redirect_to cards_path
   end
 
-  private
-  def set_card
-    @card = Card.find(params[:id])
+  # move this action here from home controller 
+  def check
+
+    puts '34324 ' + params.inspect
+    # earlier init card code was in Model class
+    card = Card.find_by_id(params[:id])
+
+    if card.check_translate(params[:user_type][:user_text])
+      card.set_review_date
+      card.save
+      flash[:notice] = 'Бинго!'
+    else
+      flash[:notice] = 'А вот и не угадал'
+    end
+
+    redirect_to index_url
   end
 
-  def card_params
-    params.require(:card).permit(:original_text, :translated_text)
+  private
+
+  def set_card
+    @card = Card.find(params[:id])
   end
 end
