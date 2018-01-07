@@ -17,7 +17,7 @@ class CardsController < ApplicationController
  
   def create
     @card = Card.new(card_params)
- 
+
     if @card.save
       redirect_to @card
     else
@@ -39,12 +39,27 @@ class CardsController < ApplicationController
     redirect_to cards_path
   end
 
+  def check
+    set_card
+
+    if @card.check_translate(card_params[:user_text])
+      @card.set_review_date
+      @card.save
+      flash[:notice] = 'Бинго!'
+    else
+      flash[:notice] = 'А вот и не угадал'
+    end
+
+    redirect_to index_url
+  end
+
   private
+
   def set_card
     @card = Card.find(params[:id])
   end
 
   def card_params
-    params.require(:card).permit(:original_text, :translated_text, :review_date)
+    params.require(:card).permit(:original_text, :translated_text, :user_text)
   end
 end

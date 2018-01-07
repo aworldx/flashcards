@@ -10,6 +10,10 @@
 
   <body>   
 
+    <% flash.each do |type, msg| %>
+      <%= content_tag :span, msg, class: "#{type}", id: "puffly" %>
+    <% end %>
+
     <ul class="nav justify-content-center">
       <li class="nav-item">
         <%= link_to 'Флэшкарточкер', root_path, class: 'nav-link active' %>

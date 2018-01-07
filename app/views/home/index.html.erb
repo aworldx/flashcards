@@ -1,3 +1,14 @@
 <p style="font-size: 22px;">
   Первый в мире удобный менеджер флеш-карточек. Именно так.
 </p>
+<% if @card.present? %>
+  <header>
+    <h4 class="alert alert-success">Вспомни какое слово переведено здесь</h4>
+  </header>
+  <%= simple_form_for @card, url: check_card_path(@card.id), method: :post do |f| %>
+    <%= f.input :translated_text, label: 'Перевод', :readonly => true %>
+    <%= f.input :user_text, label: 'Оригинальный текст', input_html: {value: '' } %>
+    <%= f.hidden_field :id %>
+    <%= f.button :submit, 'Проверить' %>
+  <% end %>
+<% end %>
