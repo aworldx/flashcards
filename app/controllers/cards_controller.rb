@@ -40,11 +40,11 @@ class CardsController < ApplicationController
   end
 
   def check
-    card = Card.find_by_id(params[:id])
+    set_card
 
-    if card.check_translate(params[:user_type][:user_text])
-      card.set_review_date
-      card.save
+    if @card.check_translate(card_params[:user_text])
+      @card.set_review_date
+      @card.save
       flash[:notice] = 'Бинго!'
     else
       flash[:notice] = 'А вот и не угадал'
@@ -60,6 +60,6 @@ class CardsController < ApplicationController
   end
 
   def card_params
-    params.require(:card).permit(:original_text, :translated_text)
+    params.require(:card).permit(:original_text, :translated_text, :user_text)
   end
 end
