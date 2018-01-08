@@ -1,41 +1,38 @@
 require 'rails_helper'
 
 describe 'Card checking', type: :feature do
+  let!(:card) { create(:card, review_date: Time.now) }
+    
+  before(:each) do
+    visit root_path
+  end
 
   context 'user opens root path' do
-    before(:each) do
-      card = create(:card, review_date: Time.now)
-      visit root_path
-    end
-
     it 'user can try translate card' do   
       expect(page).to have_content 'Вспомни какое слово переведено здесь'
     end
   end
 
-  context 'user tries to translate card this success' do
+  context '#check_translate' do
     before(:each) do
-      card = create(:card, review_date: Time.now)
-      visit root_path
-      fill_in :card_user_text, with: card.original_text
+      fill_in :card_user_text, with: user_text
       click_button 'Проверить'
     end
 
-    it "user can see 'Bingo' after translate btn push" do  
-      expect(page).to have_content 'Бинго'
-    end
-  end
+    context 'user tries to translate card this success' do
+      let!(:user_text) { card.original_text }
 
-  context 'user tries to translate card this fail' do
-    before(:each) do
-      card = create(:card, review_date: Time.now)
-      visit root_path
-      fill_in :card_user_text, with: 'smtng'
-      click_button 'Проверить'
+      it "user can see 'Bingo' after translate btn push" do  
+        expect(page).to have_content 'Бинго'
+      end
     end
 
-    it "user can see 'Bingo' after translate btn push" do  
-      expect(page).to have_content 'А вот и не угадал'
+    context 'user tries to translate card this fail' do
+      let!(:user_text) { 'smthng' }
+
+      it "user can see 'Bingo' after translate btn push" do  
+        expect(page).to have_content 'А вот и не угадал'
+      end
     end
   end
 end
