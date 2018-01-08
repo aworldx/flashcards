@@ -13,7 +13,7 @@ describe 'Card checking', type: :feature do
     end
   end
 
-  context '#check_translate' do
+  context '#check_translate' do 
     before(:each) do
       fill_in :card_user_text, with: user_text
       click_button 'Проверить'
