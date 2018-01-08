@@ -39,21 +39,18 @@ RSpec.describe Card, type: :model do
     let!(:card) { build(:card, original_text: 'hello world') }
     context 'given wrong translate' do
       it 'returns false' do
-        #card = Card.new(original_text: 'hello world')
         expect(card.check_translate('something')).to be false
       end
     end
 
     context 'given translate in another case' do
       it 'returns true' do
-        #card = Card.new(original_text: 'hello world')
         expect(card.check_translate('Hello World')).to be true
       end
     end
 
     context 'given translate in normal case' do
       it 'returns true' do
-        #card = Card.new(original_text: 'hello world')
         expect(card.check_translate('hello world')).to be true
       end
     end
