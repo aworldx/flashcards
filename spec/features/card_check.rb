@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Card checking', :type => :feature do
+describe 'Card checking', type: :feature do
 
   context 'user opens root path' do
     before(:each) do
@@ -38,5 +38,4 @@ describe 'Card checking', :type => :feature do
       expect(page).to have_content 'А вот и не угадал'
     end
   end
-
 end
