@@ -1,0 +1,1 @@
+[![Build Status](https://travis-ci.org/aworldx/flashcards.svg?branch=seventh-task)](https://travis-ci.org/aworldx/flashcards)
