@@ -4,5 +4,6 @@ rvm:
 services:
  - postgresql
 before_script:
-  - cp config/database.yml.travis config/database.yml
-  - cp config/database.yml.travis config/database.yml
+ - psql -c 'create database cards_test;' -U postgres
+ - cp config/database.yml.travis config/database.yml
+
