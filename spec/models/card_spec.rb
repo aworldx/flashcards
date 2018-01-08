@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Card, :type => :model do
+RSpec.describe Card, type: :model do
   describe '#set_review_date' do
     context 'after create card' do
       it "card's review date will be three days older then now date" do
@@ -23,6 +23,13 @@ RSpec.describe Card, :type => :model do
       it 'returns true' do
         card = Card.new(original_text: 'hello world')
         expect(card.check_translate('Hello World')).to be true
+      end
+    end
+
+    context 'given translate in normal case' do
+      it 'returns true' do
+        card = Card.new(original_text: 'hello world')
+        expect(card.check_translate('hello world')).to be true
       end
     end
   end
