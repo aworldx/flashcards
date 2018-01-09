@@ -1,7 +1,6 @@
 require "rails_helper"
 
 RSpec.describe Card, type: :model do
-
   context 'create card with specific review_date' do
     let!(:card) { create(:card, review_date: Date.today) }
 
