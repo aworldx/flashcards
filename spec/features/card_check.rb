@@ -1,9 +1,16 @@
 require 'rails_helper'
 
 describe 'Card checking', type: :feature do
+  let!(:user) { create(:user) }
   let!(:card) { create(:card, review_date: Time.now) }
     
   before(:each) do
+    visit login_path
+    
+    fill_in 'email', with: user.email
+    fill_in 'password', with: user.password
+    click_button 'Вход'
+
     visit root_path
   end
 
