@@ -2,16 +2,9 @@ require 'rails_helper'
 
 describe 'Card checking', type: :feature do
   let!(:user) { create(:user) }
-  let!(:card) { create(:card, review_date: Time.now) }
     
   before(:each) do
-    visit login_path
-    
-    fill_in 'email', with: user.email
-    fill_in 'password', with: user.password
-    click_button 'Вход'
-
-    visit root_path
+    login user
   end
 
   context 'user opens root path' do
@@ -20,7 +13,8 @@ describe 'Card checking', type: :feature do
     end
   end
 
-  context '#check_translate' do 
+  context '#check_translate' do
+    let!(:card) { user.cards.where('original_text = ?', 'old').first } 
     before(:each) do
       fill_in :card_user_text, with: user_text
       click_button 'Проверить'
