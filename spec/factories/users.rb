@@ -1,11 +1,16 @@
 FactoryBot.define do
-  factory :user do |u|
-    u.sequence(:email) { |n| 'test#{n}@gmail.com' }
-    u.password 'vrdffpswrd'
-    u.password_confirmation 'vrdffpswrd'
-    u.salt { "asdasdastr4325234324sdfds" }
-    u.crypted_password { 
-      Sorcery::CryptoProviders::BCrypt.encrypt("secret", "asdasdastr4325234324sdfds")
+  sequence(:email) { |n| 'test#{n}@gmail.com' }
+  sequence(:password) { |n| 'pass#{n}' }
+  sequence(:password_confirmation) { |n| 'pass#{n}' }
+  sequence(:salt) { |n| 'salt#{n}' }
+
+  factory :user do
+    email
+    password
+    password_confirmation
+    salt
+    crypted_password { 
+      Sorcery::CryptoProviders::BCrypt.encrypt("secret", salt)
     }
     
     after(:create) do |user|

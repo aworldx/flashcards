@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 describe 'user auth check', type: :feature do
-  let!(:user) { create(:user) }
+  let!(:pass) { 'pass' }
+  let!(:user) { create(:user, password: pass, password_confirmation: pass) }
   
   before(:each) do
     visit login_path
@@ -14,15 +15,11 @@ describe 'user auth check', type: :feature do
   end
 
   context 'user try to login' do
-    before(:each) do
-
-      # THIS DOESNT WORK!!!
-      # fill_in :user_email, with: user.email
-      # fill_in :user_password, with: password
-      # click_button 'Вход'
-
-      login user
-      visit root_url
+    before(:each) do      
+      fill_in :user_email, with: user.email
+      fill_in :user_password, with: pass
+      
+      click_button 'Вход'
     end
 
     context 'with correct password' do      

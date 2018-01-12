@@ -1,10 +1,17 @@
 require 'rails_helper'
 
 describe 'Card checking', type: :feature do
-  let!(:user) { create(:user) }
+  let!(:pass) { 'pass' }
+  let!(:user) { create(:user, password: pass, password_confirmation: pass) }
     
   before(:each) do
-    login user
+    visit login_path
+    
+    fill_in :user_email, with: user.email
+    fill_in :user_password, with: pass
+    
+    click_button 'Вход'
+
     visit root_url
   end
 
