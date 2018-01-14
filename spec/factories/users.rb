@@ -14,8 +14,7 @@ FactoryBot.define do
     }
     
     after(:create) do |user|
-      create(:card, original_text: 'old', translated_text: 'старая', review_date: Time.now - 3.days, user: user)
-      create(:card, original_text: 'new', translated_text: 'новая', review_date: Time.now + 3.days, user: user)
+      create(:card, original_text: 'hello world', translated_text: 'Привет мир', review_date: Time.now, user: user)
     end
   end
 end
