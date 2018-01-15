@@ -5,24 +5,40 @@ describe 'upload an image', type: :feature do
   let!(:user) { create(:user, password: pass, password_confirmation: pass) }
 
   context 'when user logged in and add new card' do
-    visit login_path
-    fill_in :user_email, with: user.email
-    fill_in :user_password, with: pass
     
-    click_button 'Вход'
+    before(:each) do
+      visit login_path
+      fill_in :user_email, with: user.email
+      fill_in :user_password, with: pass
+      
+      click_button 'Вход'
 
-    visit root_path
-    click_link 'Добавить карточку'
-    
-    fill_in :original_text, with: 'new card'
-    fill_in :translated_text, with: 'новая карточка'
+      visit root_path
+      click_link 'Добавить карточку'
+      
+      fill_in :card_original_text, with: 'new card'
+      fill_in :card_translated_text, with: 'новая карточка'
 
-    page.attach_file('avatar', 'spec/fixtures/images/mthoodsunset.jpg')
+      page.attach_file(:card_avatar, 'spec/support/help.png')
 
-    click_button 'Сохранить'
+      click_button 'Сохранить'
+    end
+
+    it "observes notice 'Новая карточка добавлена'" do
+      expect(page).to have_content 'Новая карточка добавлена'
+    end
+
+    it "card contains avatar" do
+      card = Card.find_by_original_text('new card')
+      expect(card.avatar_file_name).to eq('help.png')
+    end
+
+    it "root url contains avatar" do
+      visit root_path
+      expect(page).to have_css("img[src*='help.png']")
+    end
+
   end
 
-  it "observes notice 'Новая карточка добавлена'" do
-    expect(page).to have_content 'Новая карточка добавлена'
-  end
+
 end
