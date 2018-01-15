@@ -6,6 +6,8 @@
 
 config/database.yml
 *.keep
+.env
+/public/sytem
 
 # Ignore bundler config.
 /.bundle
