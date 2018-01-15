@@ -36,8 +36,11 @@ gem 'jbuilder', '~> 2.5'
 gem 'pg'
 gem 'simple_form'
 gem 'jquery-rails'
+
 # For flash messages
 gem 'puffly'
+
+gem 'sorcery'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -48,6 +51,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'timecop'
+  gem 'rails-controller-testing'
 end
 
 group :development do

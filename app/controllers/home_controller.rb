@@ -1,5 +1,5 @@
-class HomeController < ApplicationController
+class HomeController < ApplicationController  
   def index
-    @card = Card.unreviewed.first
+    @card = current_user.cards.unreviewed.first
   end
 end
