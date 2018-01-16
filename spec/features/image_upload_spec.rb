@@ -28,17 +28,19 @@ describe 'upload an image', type: :feature do
       expect(page).to have_content 'Новая карточка добавлена'
     end
 
-    it "card contains avatar" do
+    it "card model attr contains avatar" do
       card = Card.find_by_original_text('new card')
       expect(card.avatar_file_name).to eq('help.png')
     end
 
     it "root url contains avatar" do
-      visit root_path
-      expect(page).to have_css("img[src*='help.png']")
+      card = Card.find_by_original_text('hello world')
+      card.destroy
+
+      Timecop.freeze(Date.today + 3) do
+        visit root_path
+        expect(page).to have_css("img[src*='help.png']")
+      end
     end
-
   end
-
-
 end
