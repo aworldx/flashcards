@@ -41,6 +41,12 @@ gem 'jquery-rails'
 gem 'puffly'
 
 gem 'sorcery'
+gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
+gem 'aws-sdk', '< 3.0'
+
+group :test do
+  gem 'database_cleaner'
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -52,6 +58,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'timecop'
   gem 'rails-controller-testing'
+  gem 'dotenv-rails'
 end
 
 group :development do

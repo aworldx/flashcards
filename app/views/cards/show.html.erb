@@ -13,6 +13,9 @@
   <%= @card.review_date %>
 </p>
 
+<%= image_tag @card.avatar.url(:medium), id: 'avatar' if @card.avatar? %>
+<br><br>
+
 <%= link_to 'К списку карточек', cards_path, class: 'btn btn-primary' %>
 <%= link_to 'Изменить', edit_card_path(@card), class: 'btn btn-primary' %>
 <%= link_to 'Удалить', card_path(@card),

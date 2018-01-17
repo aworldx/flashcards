@@ -20,6 +20,7 @@ class CardsController < ApplicationController
 
     if @card.save
       redirect_to @card
+      flash[:notice] = 'Новая карточка добавлена'
     else
       render 'new'
     end
@@ -60,6 +61,6 @@ class CardsController < ApplicationController
   end
 
   def card_params
-    params.require(:card).permit(:original_text, :translated_text, :user_text)
+    params.require(:card).permit(:original_text, :translated_text, :user_text, :avatar)
   end
 end
