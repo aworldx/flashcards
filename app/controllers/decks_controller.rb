@@ -15,7 +15,7 @@ class DecksController < ApplicationController
 
   def edit
   end
- 
+
   def create
     @deck = current_user.decks.build(deck_params)
 
@@ -27,6 +27,20 @@ class DecksController < ApplicationController
     end
   end
 
+  def update
+    if @deck.update(deck_params)
+      redirect_to @deck
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @deck.destroy
+
+    redirect_to decks_path
+  end
+
   private
 
   def set_deck
@@ -34,6 +48,6 @@ class DecksController < ApplicationController
   end
 
   def deck_params
-    params.require(:deck).permit(:title)
+    params.require(:deck).permit(:title, :current)
   end
 end

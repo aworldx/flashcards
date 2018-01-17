@@ -6,9 +6,12 @@ class Card < ApplicationRecord
 
   before_validation :set_review_date, unless: :review_date?
 
-  scope :unreviewed, lambda { 
+  scope :unreviewed, lambda {
     where('review_date <= ?', Time.now.end_of_day).order('RANDOM()')
   }
+
+  scope :current_deck, -> { joins(:deck).where('decks.current = ?', true) }
+
 
   has_attached_file :avatar, styles: { medium: "360x360>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
@@ -21,7 +24,7 @@ class Card < ApplicationRecord
     self.review_date = Time.now + 3.days
   end
 
-  private 
+  private
 
   def original_differs_from_trans
     if original_text.casecmp(translated_text.downcase).zero?

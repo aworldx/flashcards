@@ -3,13 +3,11 @@ Rails.application.routes.draw do
   get 'index', to: 'home#index'
 
   resources :decks do
-    resources :cards, only: [:index, :new, :create]
+    resources :cards, only: [:index, :new]
   end
 
   resources :cards do
-    member do
-      post 'check'
-    end
+    post 'check', on: :member
   end
 
   resources :user_sessions

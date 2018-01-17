@@ -1,5 +1,6 @@
 <%= simple_form_for(@deck) do |f| %>
   <%= f.error_notification %>
   <%= f.input :title, label: 'Название' %>
+  <%= f.input :current, label: 'Текущая' %>
   <%= f.button :submit, 'Сохранить' %>
 <% end %>

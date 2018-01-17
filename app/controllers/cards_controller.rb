@@ -15,9 +15,9 @@ class CardsController < ApplicationController
 
   def edit
   end
- 
+
   def create
-    @card = current_user.cards.build(card_params)
+    @card = Card.new(card_params)
 
     if @card.save
       redirect_to @card
@@ -27,7 +27,7 @@ class CardsController < ApplicationController
     end
   end
 
-  def update 
+  def update
     if @card.update(card_params)
       redirect_to @card
     else
@@ -37,7 +37,7 @@ class CardsController < ApplicationController
 
   def destroy
     @card.destroy
- 
+
     redirect_to cards_path
   end
 
@@ -70,6 +70,6 @@ class CardsController < ApplicationController
   end
 
   def card_params
-    params.require(:card).permit(:original_text, :translated_text, :user_text, :avatar)
+    params.require(:card).permit(:deck_id, :original_text, :translated_text, :user_text, :avatar)
   end
 end
