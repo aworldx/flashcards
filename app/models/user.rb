@@ -1,5 +1,6 @@
 class User < ApplicationRecord  
-  has_many :cards, dependent: :destroy
+  has_many :decks, dependent: :destroy
+  has_many :cards, through: :decks
   authenticates_with_sorcery!
 
   validates :password, length: { minimum: 3 }, if: lambda {

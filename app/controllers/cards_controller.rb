@@ -1,5 +1,6 @@
 class CardsController < ApplicationController
   before_action :set_card, only: [ :show, :edit, :update, :destroy ]
+  before_action :set_deck, only: [ :new ]
 
   def index
     @cards = current_user.cards
@@ -9,7 +10,7 @@ class CardsController < ApplicationController
   end
 
   def new
-    @card = current_user.cards.build
+    @card = @deck.cards.build
   end
 
   def edit
@@ -58,6 +59,14 @@ class CardsController < ApplicationController
 
   def set_card
     @card = Card.find(params[:id])
+  end
+
+  def set_deck
+    if params[:deck_id].nil?
+      @deck = current_user.decks.build
+    else
+      @deck = current_user.decks.find(params[:deck_id])
+    end
   end
 
   def card_params

@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   root to: 'home#index'
   get 'index', to: 'home#index'
 
+  resources :decks do
+    resources :cards, only: [:index, :new, :create]
+  end
+
   resources :cards do
     member do
       post 'check'
