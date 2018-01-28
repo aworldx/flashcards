@@ -33,7 +33,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'pg'
+gem "pg", "~> 0.18"
 gem 'simple_form'
 gem 'jquery-rails'
 
