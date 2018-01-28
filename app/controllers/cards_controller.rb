@@ -1,9 +1,9 @@
 class CardsController < ApplicationController
-  before_action :set_card, only: [ :show, :edit, :update, :destroy ]
-  # ?before_action :set_deck, only: [ :new ]
+  before_action :set_card, only: [:show, :edit, :update, :destroy]
+  before_action :set_deck, only: [:index, :show, :create, :update, :edit, :destroy]
 
   def index
-    @cards = current_user.cards
+    @cards = @deck.cards.all
   end
 
   def show
@@ -26,7 +26,7 @@ class CardsController < ApplicationController
     @card = Card.new(card_params)
 
     if @card.save
-      redirect_to @card
+      redirect_to deck_cards_path(@deck)
       flash[:notice] = 'Новая карточка добавлена'
     else
       render 'new'
@@ -35,7 +35,7 @@ class CardsController < ApplicationController
 
   def update
     if @card.update(card_params)
-      redirect_to @card
+      redirect_to deck_card_path(@deck, @card)
     else
       render 'edit'
     end
@@ -44,7 +44,7 @@ class CardsController < ApplicationController
   def destroy
     @card.destroy
 
-    redirect_to cards_path
+    redirect_to deck_cards_path(@deck)
   end
 
   def check
@@ -65,6 +65,10 @@ class CardsController < ApplicationController
 
   def set_card
     @card = Card.find(params[:id])
+  end
+
+  def set_deck
+    @deck = Deck.find(params[:deck_id])
   end
 
   def card_params

@@ -3,16 +3,13 @@ Rails.application.routes.draw do
   get 'index', to: 'home#index'
 
   resources :decks do
-    resources :cards, only: [:index, :new]
+    resources :cards
   end
 
-  resources :cards do
-    post 'check', on: :member
-  end
+  post 'check/:id', to: 'cards#check', as: 'check_translate'
 
-  resources :user_sessions
-  resources :users
+  resources :users, :user_sessions
 
-  get 'login' => 'user_sessions#new', :as => :login
-  post 'logout' => 'user_sessions#destroy', :as => :logout
+  get 'login', to: 'user_sessions#new', as: 'login'
+  post 'logout', to: 'user_sessions#destroy', as: 'logout'
 end

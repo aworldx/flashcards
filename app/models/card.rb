@@ -10,9 +10,6 @@ class Card < ApplicationRecord
     where('review_date <= ?', Time.now.end_of_day).order('RANDOM()')
   }
 
-  scope :current_deck, -> { joins(:deck).where('decks.current = ?', true) }
-
-
   has_attached_file :avatar, styles: { medium: "360x360>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 

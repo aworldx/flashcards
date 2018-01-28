@@ -2,7 +2,7 @@
   <strong>Текст:</strong>
   <%= @card.original_text %>
 </p>
- 
+
 <p>
   <strong>Перевод:</strong>
   <%= @card.translated_text %>
@@ -16,8 +16,8 @@
 <%= image_tag @card.avatar.url(:medium), id: 'avatar' if @card.avatar? %>
 <br><br>
 
-<%= link_to 'К списку карточек', cards_path, class: 'btn btn-primary' %>
-<%= link_to 'Изменить', edit_card_path(@card), class: 'btn btn-primary' %>
-<%= link_to 'Удалить', card_path(@card),
+<%= link_to 'К списку карточек', deck_cards_path, class: 'btn btn-primary' %>
+<%= link_to 'Изменить', edit_deck_card_path(@deck, @card), class: 'btn btn-primary' %>
+<%= link_to 'Удалить', deck_card_path(@deck, @card),
               method: :delete,
               data: { confirm: 'Вы уверены?' }, class: 'btn btn-primary' %>

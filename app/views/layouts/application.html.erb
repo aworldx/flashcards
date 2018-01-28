@@ -8,7 +8,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>   
+  <body>
 
     <% flash.each do |type, msg| %>
       <%= content_tag :span, msg, class: "#{type}", id: "puffly" %>
@@ -19,7 +19,7 @@
         <%= link_to 'Флэшкарточкер', root_path, class: 'nav-link active' %>
       </li>
       <li class="nav-item">
-        <%= link_to 'Все карточки', cards_path, class: 'nav-link' %>
+        <%= link_to 'Колоды', decks_path, class: 'nav-link' %>
       </li>
       <% if current_user %>
         <li class="nav-item">
@@ -42,11 +42,6 @@
 
       <header class="clearfix">
         <h1>Флэшкарточкер</h1>
-        <ul class="navigation-links">
-          <li><%= link_to 'Все карточки', cards_path %></li>
-          <li><%= link_to 'Добавить карточку', new_card_path %></li>
-          <li><%= link_to 'Колоды', decks_path %></li>
-        </ul>
       </header>
 
       <section>
