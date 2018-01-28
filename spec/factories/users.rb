@@ -12,11 +12,9 @@ FactoryBot.define do
   factory :user do
     email
     password
-    password_confirmation {password}
+    password_confirmation { password }
     salt
-    crypted_password {
-      Sorcery::CryptoProviders::BCrypt.encrypt("secret", salt)
-    }
+    crypted_password { Sorcery::CryptoProviders::BCrypt.encrypt("secret", salt) }
 
     after(:create) do |user|
       create(:deck, user: user)
