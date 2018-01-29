@@ -1,10 +1,11 @@
 class HomeController < ApplicationController
-  def index
-    @deck = current_user.decks.current.first
-    if @deck.nil?
-      @card = current_user.cards.unreviewed.first
+  def index  
+    if current_user.current_deck_id.present?
+      deck = Deck.find(current_user.current_deck_id).cards
     else
-      @card = @deck.cards.unreviewed.first
+      deck = current_user.cards
     end
+
+    @card = deck.unreviewed.first
   end
 end

@@ -51,6 +51,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def set_current_deck
+    current_user.current_deck_id = params[:deck_id]
+    current_user.save
+  end
+
   private
 
     def set_user

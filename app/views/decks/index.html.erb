@@ -15,10 +15,11 @@
     <% @decks.each do |deck| %>
       <tr>
         <td><%= deck.title %></td>
-        <td><%= deck.current %></td>
+        <td><%= check_box_tag('current_deck', '', current_user.current_deck_id == deck.id, disabled: true) %></td>
         <td><%= link_to 'Детали', deck %></td>
         <td><%= link_to 'Изменить', edit_deck_path(deck) %></td>
         <td><%= link_to 'Удалить', deck, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+        <td><%= link_to 'Сделать Текущей', set_current_deck_path(deck), method: :post %></td>
       </tr>
     <% end %>
   </tbody>
