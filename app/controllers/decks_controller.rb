@@ -1,5 +1,6 @@
 class DecksController < ApplicationController
   before_action :set_deck, only: [ :show, :edit, :update, :destroy ]
+  helper_method :current?
 
   def index
     @decks = current_user.decks.all
@@ -39,6 +40,10 @@ class DecksController < ApplicationController
     @deck.destroy
 
     redirect_to decks_path
+  end
+
+  def current?(deck_id)
+    current_user.current_deck_id == deck_id
   end
 
   private

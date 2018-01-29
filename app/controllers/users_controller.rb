@@ -54,6 +54,10 @@ class UsersController < ApplicationController
   def set_current_deck
     current_user.current_deck_id = params[:deck_id]
     current_user.save
+    respond_to do |format|
+      format.html { redirect_to decks_path, notice: 'Текущая колода была успешно изменена.' }
+      format.json { head :no_content }
+    end
   end
 
   private

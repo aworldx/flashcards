@@ -17,7 +17,7 @@ describe 'upload an image', type: :feature do
     it 'should save image' do
       expect(card.avatar_file_name).to be(nil)
 
-      visit "decks/#{card.deck_id}/cards/#{card.id}/edit"
+      visit "cards/#{card.id}/edit"
 
       page.attach_file(:card_avatar, 'spec/support/help.png')
       click_button 'Сохранить'

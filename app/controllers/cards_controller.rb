@@ -1,6 +1,6 @@
 class CardsController < ApplicationController
   before_action :set_card, only: [:show, :edit, :update, :destroy]
-  before_action :set_deck, only: [:index, :show, :create, :update, :edit, :destroy]
+  before_action :set_deck, only: [:index, :new, :create]
 
   def index
     @cards = @deck.cards.all
@@ -35,7 +35,7 @@ class CardsController < ApplicationController
 
   def update
     if @card.update(card_params)
-      redirect_to deck_card_path(@deck, @card)
+      redirect_to card_path(@card)
     else
       render 'edit'
     end
@@ -44,10 +44,10 @@ class CardsController < ApplicationController
   def destroy
     @card.destroy
 
-    redirect_to deck_cards_path(@deck)
+    redirect_to deck_cards_path(@card.deck_id)
   end
 
-  def check
+  def check_translate
     set_card
 
     if @card.check_translate(card_params[:user_text])

@@ -14,9 +14,9 @@
             </p>
           </div>
           <div class="card-footer text-muted">
-            <%= link_to 'Открыть', deck_card_path(@deck, card) %>
-            <%= link_to 'Изменить', edit_deck_card_path(@deck, card) %>
-            <%= link_to 'Удалить', deck_card_path(@deck, card),
+            <%= link_to 'Открыть', card_path(card) %>
+            <%= link_to 'Изменить', edit_card_path(card) %>
+            <%= link_to 'Удалить', card_path(card),
               method: :delete,
               data: { confirm: 'Вы уверены?' } %>
           </div>
