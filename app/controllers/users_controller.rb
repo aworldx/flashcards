@@ -52,8 +52,17 @@ class UsersController < ApplicationController
   end
 
   def set_current_deck
-    current_user.current_deck_id = params[:deck_id]
+
+    # nil передается если нужно снять текущую колоду
+    if params[:deck_id].nil?
+      deck = nil
+    else  
+      deck = current_user.decks.find(params[:deck_id])
+    end
+
+    current_user.current_deck = deck
     current_user.save
+
     respond_to do |format|
       format.html { redirect_to decks_path, notice: 'Текущая колода была успешно изменена.' }
       format.json { head :no_content }

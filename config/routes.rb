@@ -10,9 +10,15 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, :user_sessions
+  resources :users do
+    member do 
+       post 'set_current_deck(/:deck_id)', action: 'set_current_deck', as: 'set_current_deck'
+    end  
+  end
+  
+  resources :user_sessions
 
-  post 'set_current_deck(/:deck_id)', to: 'users#set_current_deck', as: 'set_current_deck'
+  # post 'set_current_deck(/:deck_id)', to: 'users#set_current_deck', as: 'set_current_deck'
 
   get 'login', to: 'user_sessions#new', as: 'login'
   post 'logout', to: 'user_sessions#destroy', as: 'logout'

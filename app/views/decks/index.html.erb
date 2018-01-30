@@ -15,12 +15,12 @@
     <% @decks.each do |deck| %>
       <tr>
         <td><%= deck.title %></td>
-        <td><%= check_box_tag('current_deck', '', current?(deck.id), disabled: true) %></td>
+        <td><%= check_box_tag('current_deck', '', current_user.current_deck == deck, disabled: true) %></td>
         <td><%= link_to 'Детали', deck %></td>
         <td><%= link_to 'Изменить', edit_deck_path(deck) %></td>
         <td><%= link_to 'Удалить', deck, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
-        <% unless current?(deck.id) %>
-          <td><%= link_to 'Текущая', set_current_deck_path(deck), method: :post %></td>
+        <% unless current_user.current_deck == deck %>
+          <td><%= link_to 'Текущая', set_current_deck_user_path(current_user, deck), method: :post %></td>
         <% end %>
       </tr>
     <% end %>
@@ -29,5 +29,5 @@
 
 <br>
 
-<%= link_to 'Сбросить текущую колоду', set_current_deck_path(nil), method: :post %>
+<%= link_to 'Сбросить текущую колоду', set_current_deck_user_path(current_user, nil), method: :post %>
 <%= link_to 'Новая колода', new_deck_path %>
