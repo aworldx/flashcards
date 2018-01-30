@@ -17,14 +17,12 @@ describe 'Card checking', type: :feature do
 
   context 'when user opens root path' do
     it 'can try translate card from current deck' do
-      user.current_deck = user.decks.first
-      user.save
+      user.update(current_deck: user.decks.first)
       expect(page).to have_content 'Вспомни какое слово'
     end
 
     it 'can try translate card from all decks' do
-      user.current_deck = nil
-      user.save
+      user.update(current_deck: nil)
       expect(page).to have_content 'Вспомни какое слово'
     end
   end

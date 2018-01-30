@@ -53,9 +53,9 @@ class UsersController < ApplicationController
 
   def set_current_deck
     deck = current_user.decks.find(params[:deck_id])
+
     if deck.present?
-      current_user.current_deck = deck
-      current_user.save
+      current_user.update(current_deck: deck)
       msg = 'Текущая колода была успешно изменена.'
     else
       msg = 'Колода не найдена!'
@@ -68,8 +68,7 @@ class UsersController < ApplicationController
   end
 
   def remove_current_deck
-    current_user.current_deck = nil
-    current_user.save
+    current_user.update(current_deck: nil)
 
     respond_to do |format|
       format.html { redirect_to decks_path, notice: 'Теперь у вас нет активной колоды' }
