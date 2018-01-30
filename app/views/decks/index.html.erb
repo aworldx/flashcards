@@ -29,5 +29,5 @@
 
 <br>
 
-<%= link_to 'Сбросить текущую колоду', set_current_deck_user_path(current_user, nil), method: :post %>
+<%= link_to 'Сбросить текущую колоду', remove_current_deck_user_path(current_user), method: :post %>
 <%= link_to 'Новая колода', new_deck_path %>
