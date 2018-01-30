@@ -2,6 +2,7 @@
   <%= f.association :deck,  label: 'Колода' %>
   <%= f.input :original_text, label: 'Текст' %>
   <%= f.input :translated_text, label: 'Перевод' %>
+  <%= f.input :review_date, label: 'Дата ревью' %>
   <%= image_tag @card.avatar.url(:medium), id: 'avatar' if @card.avatar? %>
   <%= f.input :avatar, as: :file %>
   <%= f.button :submit, 'Сохранить', class: "btn btn-primary" %>
