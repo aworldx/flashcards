@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Название колоды:</strong>
+  <%= @deck.title %>
+</p>
+
+<%= link_to 'Открыть карточки колоды', deck_cards_path(@deck) %><br>
+<%= link_to 'Добавить карточку в колоду', new_deck_card_path(@deck) %><br>
+<%= link_to 'Изменить', edit_deck_path(@deck) %><br>
+<%= link_to 'Назад', decks_path %>

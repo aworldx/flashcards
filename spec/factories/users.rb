@@ -1,20 +1,23 @@
 FactoryBot.define do
-  sequence(:email) { |n| 'test#{n}@gmail.com' }
-  sequence(:password) { |n| 'pass#{n}' }
-  sequence(:password_confirmation) { |n| 'pass#{n}' }
-  sequence(:salt) { |n| 'salt#{n}' }
+  sequence :email do |n|
+    "person#{n}@example.com"
+  end
+  sequence :password do |n|
+    "pass#{n}"
+  end
+  sequence :salt do |n|
+    "salt#{n}"
+  end
 
   factory :user do
     email
     password
-    password_confirmation
+    password_confirmation { password }
     salt
-    crypted_password { 
-      Sorcery::CryptoProviders::BCrypt.encrypt("secret", salt)
-    }
-    
+    crypted_password { Sorcery::CryptoProviders::BCrypt.encrypt("secret", salt) }
+
     after(:create) do |user|
-      create(:card, original_text: 'hello world', translated_text: 'Привет мир', review_date: Time.now, user: user)
+      create(:deck, user: user)
     end
   end
 end

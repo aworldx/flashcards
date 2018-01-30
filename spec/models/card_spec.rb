@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Card, type: :model do
   context 'when card was created with review date equal today date' do
-    let!(:card) { create(:card, review_date: Date.today) }
+    let(:card) { create(:card, review_date: Date.today) }
 
     it "catd's review date will be today" do
       expect(card.review_date.to_date).to eql(Date.today)
@@ -22,7 +22,7 @@ RSpec.describe Card, type: :model do
     end
 
     context 'when called hard review_date reset and resave card' do
-      let!(:card) { create(:card, review_date: Date.today) }
+      let(:card) { create(:card, review_date: Date.today) }
 
       it "card's review date will be three days older then now date" do
         card.set_review_date
@@ -35,7 +35,7 @@ RSpec.describe Card, type: :model do
   end
 
   describe '#check_translate' do
-    let!(:card) { build(:card, original_text: 'hello world') }
+    let(:card) { build(:card, original_text: 'hello world') }
     context 'when given wrong translate' do
       it 'returns false' do
         expect(card.check_translate('something')).to be false
@@ -52,6 +52,19 @@ RSpec.describe Card, type: :model do
       it 'returns true' do
         expect(card.check_translate('hello world')).to be true
       end
+    end
+  end
+
+  describe '#deck' do
+    let(:card) { build(:card, deck: nil) }
+
+    it 'should validate presence' do
+      card.valid?
+      card.errors[:deck].should include('must exist')
+
+      card.deck = Deck.new(title: 'new deck')
+      card.valid?
+      card.errors[:deck].should_not include('must exist')
     end
   end
 end

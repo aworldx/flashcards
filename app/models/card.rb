@@ -1,20 +1,18 @@
 class Card < ApplicationRecord
-  belongs_to :user
+  belongs_to :deck
 
   validates :original_text, :translated_text, :review_date, presence: true
   validate :original_differs_from_trans
 
   before_validation :set_review_date, unless: :review_date?
 
-  scope :unreviewed, lambda { 
+  scope :unreviewed, lambda {
     where('review_date <= ?', Time.now.end_of_day).order('RANDOM()')
   }
 
-  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+  has_attached_file :avatar, styles: { medium: "360x360>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
-  # made instance method, instead class method
-  # and remove saving card from here to card controller
   def check_translate(user_text)
     original_text.casecmp(user_text).zero?
   end
@@ -23,7 +21,7 @@ class Card < ApplicationRecord
     self.review_date = Time.now + 3.days
   end
 
-  private 
+  private
 
   def original_differs_from_trans
     if original_text.casecmp(translated_text.downcase).zero?

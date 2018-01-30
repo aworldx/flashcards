@@ -1,34 +1,41 @@
 class CardsController < ApplicationController
-  before_action :set_card, only: [ :show, :edit, :update, :destroy ]
+  before_action :set_card, only: [:show, :edit, :update, :destroy]
+  before_action :set_deck, only: [:index, :new, :create]
 
   def index
-    @cards = current_user.cards
+    @cards = @deck.cards.all
   end
 
   def show
   end
 
   def new
-    @card = current_user.cards.build
+    if params[:deck_id].nil?
+      redirect_to decks_url
+      flash[:error] = 'Карточка добавляется из колоды'
+    else
+      @deck = current_user.decks.find(params[:deck_id])
+      @card = @deck.cards.build
+    end
   end
 
   def edit
   end
- 
+
   def create
-    @card = current_user.cards.build(card_params)
+    @card = Card.new(card_params)
 
     if @card.save
-      redirect_to @card
+      redirect_to deck_cards_path(@deck)
       flash[:notice] = 'Новая карточка добавлена'
     else
       render 'new'
     end
   end
 
-  def update 
+  def update
     if @card.update(card_params)
-      redirect_to @card
+      redirect_to card_path(@card)
     else
       render 'edit'
     end
@@ -36,11 +43,11 @@ class CardsController < ApplicationController
 
   def destroy
     @card.destroy
- 
-    redirect_to cards_path
+
+    redirect_to deck_cards_path(@card.deck_id)
   end
 
-  def check
+  def check_translate
     set_card
 
     if @card.check_translate(card_params[:user_text])
@@ -60,7 +67,11 @@ class CardsController < ApplicationController
     @card = Card.find(params[:id])
   end
 
+  def set_deck
+    @deck = Deck.find(params[:deck_id])
+  end
+
   def card_params
-    params.require(:card).permit(:original_text, :translated_text, :user_text, :avatar)
+    params.require(:card).permit(:deck_id, :original_text, :translated_text, :user_text, :avatar)
   end
 end

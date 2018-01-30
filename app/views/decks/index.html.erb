@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Колоды</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Название</th>
+      <th>Текущая</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @decks.each do |deck| %>
+      <tr>
+        <td><%= deck.title %></td>
+        <td><%= check_box_tag('current_deck', '', current_user.current_deck == deck, disabled: true) %></td>
+        <td><%= link_to 'Детали', deck %></td>
+        <td><%= link_to 'Изменить', edit_deck_path(deck) %></td>
+        <td><%= link_to 'Удалить', deck, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+        <% unless current_user.current_deck == deck %>
+          <td><%= link_to 'Текущая', set_current_deck_user_path(current_user, deck), method: :post %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Сбросить текущую колоду', remove_current_deck_user_path(current_user), method: :post %>
+<%= link_to 'Новая колода', new_deck_path %>

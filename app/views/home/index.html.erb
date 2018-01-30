@@ -5,7 +5,7 @@
   <header>
     <h4 class="alert alert-success">Вспомни какое слово переведено здесь</h4>
   </header>
-  <%= simple_form_for @card, url: check_card_path(@card.id), method: :post do |f| %>
+  <%= simple_form_for @card, url: check_translate_card_path(@card), method: :post do |f| %>
     <%= image_tag @card.avatar.url(:medium), id: 'avatar' if @card.avatar %>
     <%= f.input :translated_text, label: 'Перевод', :readonly => true %>
     <%= f.input :user_text, label: 'Оригинальный текст', input_html: {value: '' } %>
