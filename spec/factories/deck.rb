@@ -4,7 +4,7 @@ FactoryBot.define do
     user
 
     after(:create) do |deck|
-      create(:card, original_text: 'hello world', translated_text: 'Привет мир', review_date: Time.now, deck: deck)
+      create(:card, original_text: 'hello world', translated_text: 'Привет мир', deck: deck)
     end
   end
 end

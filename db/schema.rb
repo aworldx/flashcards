@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180130083714) do
+ActiveRecord::Schema.define(version: 20180201174212) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20180130083714) do
   create_table "cards", force: :cascade do |t|
     t.string "original_text"
     t.string "translated_text"
-    t.date "review_date"
+    t.datetime "review_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "avatar_file_name"
@@ -35,6 +35,8 @@ ActiveRecord::Schema.define(version: 20180130083714) do
     t.integer "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.bigint "deck_id", null: false
+    t.integer "success_checks", default: 0, null: false
+    t.integer "fail_checks", default: 0, null: false
     t.index ["deck_id"], name: "index_cards_on_deck_id"
   end
 

@@ -51,13 +51,19 @@ class CardsController < ApplicationController
     set_card
 
     if @card.check_translate(card_params[:user_text])
+      @card.on_success_check
       @card.set_review_date
-      @card.save
-      flash[:notice] = 'Бинго!'
+
+      msg = 'Бинго!'
     else
-      flash[:notice] = 'А вот и не угадал'
+      @card.on_fail_check
+
+      msg = 'А вот и не угадал'
     end
 
+    @card.save
+
+    flash[:notice] = msg
     redirect_to index_url
   end
 

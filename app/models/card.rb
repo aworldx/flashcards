@@ -17,8 +17,39 @@ class Card < ApplicationRecord
     original_text.casecmp(user_text).zero?
   end
 
+  def on_success_check
+    self.success_checks += 1
+    self.fail_checks = 0
+  end
+
+  def on_fail_check
+    self.fail_checks += 1
+
+    if fail_checks == 3
+      self.success_checks = 0
+      self.fail_checks = 0
+    end
+  end
+
   def set_review_date
-    self.review_date = Time.now + 3.days
+    self.review_date = Time.now + get_repetition_period
+  end
+
+  def get_repetition_period
+    case success_checks
+    when 0
+      0
+    when 1
+      12.hours
+    when 2
+      3.days
+    when 3
+      1.week
+    when 4
+      2.weeks
+    else
+      1.month
+    end
   end
 
   private
