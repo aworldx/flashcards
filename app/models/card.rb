@@ -32,24 +32,12 @@ class Card < ApplicationRecord
   end
 
   def set_review_date
-    self.review_date = Time.now + get_repetition_period
+    self.review_date = Time.now + repetition_period
   end
 
-  def get_repetition_period
-    case success_checks
-    when 0
-      0
-    when 1
-      12.hours
-    when 2
-      3.days
-    when 3
-      1.week
-    when 4
-      2.weeks
-    else
-      1.month
-    end
+  def repetition_period
+    periods = { 0 => 0, 1 => 12.hours, 2 => 3.days, 3 => 1.week, 4 => 2.week, 5..Float::INFINITY => 1.month }
+    periods.select { |key| key === success_checks }.values[0]
   end
 
   private
