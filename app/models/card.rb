@@ -7,7 +7,7 @@ class Card < ApplicationRecord
   before_validation :set_review_date, unless: :review_date?
 
   scope :unreviewed, lambda {
-    where('review_date <= ?', Time.now.end_of_day).order('RANDOM()')
+    where('review_date <= ?', Time.now).order('RANDOM()')
   }
 
   has_attached_file :avatar, styles: { medium: "360x360>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
