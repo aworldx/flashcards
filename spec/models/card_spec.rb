@@ -1,6 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe Card, type: :model do
+  context 'after card create' do
+    it 'review date should be now' do
+      Timecop.freeze(Time.now) do
+        card = create(:card)
+        expect(card.review_date.to_i).to eql(Time.now.to_i)
+      end
+    end
+  end
+
   describe '#check_translate' do
     let(:card) { build(:card, original_text: 'hello world') }
     context 'when given wrong translate' do
