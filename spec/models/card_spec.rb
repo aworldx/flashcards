@@ -1,35 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Card, type: :model do
-  context 'when card was created with review date equal today date' do
-    let(:card) { create(:card, review_date: Date.today) }
-
-    it "catd's review date will be today" do
-      expect(card.review_date.to_date).to eql(Date.today)
-    end
-  end
-
-  describe '#set_review_date' do
-
-    context 'when card was created without specific date' do
-      let!(:card) { create(:card) }
-
-      it "card's review date will be three days older then now date" do
-        Timecop.freeze(Date.today + 3) do
-          expect(card.review_date.to_date).to eql(Date.today)
-        end
-      end
-    end
-
-    context 'when called hard review_date reset and resave card' do
-      let(:card) { create(:card, review_date: Date.today) }
-
-      it "card's review date will be three days older then now date" do
-        card.set_review_date
-        card.save
-        Timecop.freeze(Date.today + 3) do
-          expect(card.review_date.to_date).to eql(Date.today)
-        end
+  context 'after card create' do
+    it 'review date should be now' do
+      Timecop.freeze(Time.now) do
+        card = create(:card)
+        expect(card.review_date.to_i).to eql(Time.now.to_i)
       end
     end
   end

@@ -7,7 +7,7 @@ class Card < ApplicationRecord
   before_validation :set_review_date, unless: :review_date?
 
   scope :unreviewed, lambda {
-    where('review_date <= ?', Time.now.end_of_day).order('RANDOM()')
+    where('review_date <= ?', Time.now).order('RANDOM()')
   }
 
   has_attached_file :avatar, styles: { medium: "360x360>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
@@ -17,8 +17,27 @@ class Card < ApplicationRecord
     original_text.casecmp(user_text).zero?
   end
 
+  def on_success_check
+    self.success_checks += 1
+    self.fail_checks = 0
+  end
+
+  def on_fail_check
+    self.fail_checks += 1
+
+    if fail_checks == 3
+      self.success_checks = 0
+      self.fail_checks = 0
+    end
+  end
+
   def set_review_date
-    self.review_date = Time.now + 3.days
+    self.review_date = Time.now + repetition_period
+  end
+
+  def repetition_period
+    periods = { 0 => 0, 1 => 12.hours, 2 => 3.days, 3 => 1.week, 4 => 2.week }
+    periods.fetch(success_checks, 1.month)
   end
 
   private
