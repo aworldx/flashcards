@@ -36,8 +36,8 @@ class Card < ApplicationRecord
   end
 
   def repetition_period
-    periods = { 0 => 0, 1 => 12.hours, 2 => 3.days, 3 => 1.week, 4 => 2.week, 5..Float::INFINITY => 1.month }
-    periods.select { |key| key === success_checks }.values[0]
+    periods = { 0 => 0, 1 => 12.hours, 2 => 3.days, 3 => 1.week, 4 => 2.week }
+    periods.fetch(success_checks, 1.month)
   end
 
   private
