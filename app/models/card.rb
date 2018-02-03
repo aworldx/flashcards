@@ -14,7 +14,7 @@ class Card < ApplicationRecord
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
   def check_translate(user_text)
-    original_text.casecmp(user_text).zero?
+    DamerauLevenshtein.distance(original_text.downcase, user_text.downcase)
   end
 
   def on_success_check
@@ -40,10 +40,6 @@ class Card < ApplicationRecord
   def repetition_period
     periods = { 0 => 0, 1 => 12.hours, 2 => 3.days, 3 => 1.week, 4 => 2.week }
     periods.fetch(success_checks, 1.month)
-  end
-
-  def check_misprints(user_text)
-    DamerauLevenshtein.distance(original_text, user_text) == 1
   end
 
   private

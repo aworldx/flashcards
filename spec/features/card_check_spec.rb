@@ -45,8 +45,16 @@ describe 'Card checking', type: :feature do
     context 'with wrong translate text' do
       let(:user_text) { 'smthng' }
 
-      it "can see 'Bingo' after translate btn push" do
+      it "can see fail message" do
         expect(page).to have_content 'А вот и не угадал'
+      end
+    end
+
+    context 'with text which contains misprints' do
+      let(:user_text) { 'Hello owrld' }
+
+      it "can see 'Bingo' after translate btn push" do
+        expect(page).to have_content 'Бинго'
       end
     end
   end

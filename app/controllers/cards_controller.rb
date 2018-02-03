@@ -50,17 +50,15 @@ class CardsController < ApplicationController
   def check_translate
     set_card
 
-    if @card.check_translate(card_params[:user_text])
+    check_result = @card.check_translate(card_params[:user_text])
+    if check_result <=1
       @card.on_success_check
       @card.set_review_date
+      misprint = "Опечатка! Вы написали: #{card_params[:user_text]} Правильно так: #{@card.original_text}" if check_result == 1
 
       msg = 'Бинго!'
     else
       @card.on_fail_check
-
-      if @card.check_misprints(card_params[:user_text])
-        misprint = "Опечатка! Правильно так: #{@card.original_text}"
-      end
 
       msg = 'А вот и не угадал'
     end
