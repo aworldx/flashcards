@@ -58,13 +58,17 @@ class CardsController < ApplicationController
     else
       @card.on_fail_check
 
+      if @card.check_misprints(card_params[:user_text])
+        misprint = "Опечатка! Правильно так: #{@card.original_text}"
+      end
+
       msg = 'А вот и не угадал'
     end
 
     @card.save
 
     flash[:notice] = msg
-    redirect_to index_url
+    redirect_to root_path(misprint: misprint)
   end
 
   private

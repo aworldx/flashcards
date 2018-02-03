@@ -29,6 +29,8 @@ class Card < ApplicationRecord
       self.success_checks = 0
       self.fail_checks = 0
     end
+
+    errors[:base] << 'опечатка'
   end
 
   def set_review_date
@@ -38,6 +40,10 @@ class Card < ApplicationRecord
   def repetition_period
     periods = { 0 => 0, 1 => 12.hours, 2 => 3.days, 3 => 1.week, 4 => 2.week }
     periods.fetch(success_checks, 1.month)
+  end
+
+  def check_misprints(user_text)
+    DamerauLevenshtein.distance(original_text, user_text) == 1
   end
 
   private
