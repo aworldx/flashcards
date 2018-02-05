@@ -14,19 +14,19 @@ RSpec.describe Card, type: :model do
     let(:card) { build(:card, original_text: 'hello world') }
     context 'when given wrong translate' do
       it 'returns > 1' do
-        expect(card.check_translate('something')).to be > 1
+        expect(card.misprint_count('something')).to be > 1
       end
     end
 
     context 'when given translate in another case' do
       it 'returns 0' do
-        expect(card.check_translate('Hello World')).to eql(0)
+        expect(card.misprint_count('Hello World')).to eql(0)
       end
     end
 
     context 'when given translate in normal case' do
       it 'returns 0' do
-        expect(card.check_translate('hello world')).to eql(0)
+        expect(card.misprint_count('hello world')).to eql(0)
       end
     end
   end
