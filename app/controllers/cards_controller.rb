@@ -50,9 +50,11 @@ class CardsController < ApplicationController
   def check_translate
     set_card
 
-    if @card.check_translate(card_params[:user_text])
+    check_result = @card.misprint_count(card_params[:user_text])
+    if check_result <=1
       @card.on_success_check
       @card.set_review_date
+      misprint = "Опечатка! Вы написали: #{card_params[:user_text]} Правильно так: #{@card.original_text}" if check_result == 1
 
       msg = 'Бинго!'
     else
@@ -64,7 +66,7 @@ class CardsController < ApplicationController
     @card.save
 
     flash[:notice] = msg
-    redirect_to index_url
+    redirect_to root_path(misprint: misprint)
   end
 
   private

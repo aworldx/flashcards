@@ -44,6 +44,8 @@ gem 'sorcery'
 gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
 gem 'aws-sdk', '< 3.0'
 
+gem 'damerau-levenshtein'
+
 group :test do
   gem 'database_cleaner'
 end

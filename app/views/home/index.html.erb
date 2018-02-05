@@ -2,6 +2,7 @@
   Первый в мире удобный менеджер флеш-карточек. Именно так.
 </p>
 <% if @card.present? %>
+  <%= @misprint if @misprint.present? %>
   <header>
     <h4 class="alert alert-success">Вспомни какое слово переведено здесь</h4>
   </header>

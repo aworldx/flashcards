@@ -13,8 +13,8 @@ class Card < ApplicationRecord
   has_attached_file :avatar, styles: { medium: "360x360>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
-  def check_translate(user_text)
-    original_text.casecmp(user_text).zero?
+  def misprint_count(user_text)
+    DamerauLevenshtein.distance(original_text.downcase, user_text.downcase)
   end
 
   def on_success_check
@@ -29,6 +29,8 @@ class Card < ApplicationRecord
       self.success_checks = 0
       self.fail_checks = 0
     end
+
+    errors[:base] << 'опечатка'
   end
 
   def set_review_date
