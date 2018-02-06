@@ -1,12 +1,12 @@
 class NotificationsMailer < ActionMailer::Base
-  default from: 'aworldx@gmail.com'
+  default from: ENV["DEFAULT_SENDER_EMAIL"]
 
   def pending_cards
-    @url = 'https://ffflashcards.herokuapp.com/'
+    @url = ENV["SITE_URL"]
 
     User.with_pending_cards.each do |user|
       @user = user
-      mail(to: @user.email, subject: 'Вас ждут непереведнные карточки!').deliver
+      mail(to: @user.email, subject: 'Вас ждут непереведнные карточки!').deliver_now
     end
   end
 end
