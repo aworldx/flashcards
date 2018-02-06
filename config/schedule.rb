@@ -1,3 +1,3 @@
-every 1.day do
-  runner "NotificationsMailer.pending_cards"
+every 1.minute do
+  rake 'send_pending_cards_email', environment: 'development'
 end
