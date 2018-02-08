@@ -6,7 +6,7 @@ class UserMailer < ActionMailer::Base
 
     User.with_pending_cards.each do |user|
       @user = user
-      mail(to: @user.email, subject: 'Вас ждут непереведнные карточки!').deliver_now!
+      mail(to: @user.email, subject: 'Вас ждут непереведнные карточки!').deliver!
     end
   end
 end
