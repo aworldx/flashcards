@@ -1,5 +1,6 @@
 desc 'send email'
 task send_pending_cards_email: :environment do
-  byebug
-  UserMailer.pending_cards
+  User.with_pending_cards.each do |user|
+    UserMailer.pending_cards(user).deliver
+  end
 end

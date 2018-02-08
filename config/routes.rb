@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   root to: 'home#index'
   get 'index', to: 'home#index'
@@ -21,4 +23,6 @@ Rails.application.routes.draw do
 
   get 'login', to: 'user_sessions#new', as: 'login'
   post 'logout', to: 'user_sessions#destroy', as: 'logout'
+
+  mount Sidekiq::Web => '/sidekiq'
 end

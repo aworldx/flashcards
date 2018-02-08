@@ -1,3 +1,3 @@
 every 1.minute do
-  rake 'send_pending_cards_email', environment: 'development'
+  runner 'SendPendingCardsEmailJob.perform_later', environment: 'development'
 end
