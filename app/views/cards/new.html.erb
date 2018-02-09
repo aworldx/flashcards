@@ -1,4 +1,4 @@
-<h1>Новая карточка</h1>
+<h1><%= t('cards.new_card_title') %></h1>
 <%= render 'form' %>
 <br>
-<%= link_to 'К списку карточек', deck_cards_path(@deck), class: 'btn btn-primary' %>
+<%= link_to t('cards.back_to_cards_list'), deck_cards_path(@deck), class: 'btn btn-primary' %>

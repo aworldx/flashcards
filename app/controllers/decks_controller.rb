@@ -21,7 +21,7 @@ class DecksController < ApplicationController
 
     if @deck.save
       redirect_to @deck
-      flash[:notice] = 'Новая колода добавлена'
+      flash[:notice] = t('notice.new_deck')
     else
       render 'new'
     end

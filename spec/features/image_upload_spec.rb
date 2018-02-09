@@ -20,7 +20,7 @@ describe 'upload an image', type: :feature do
       visit "cards/#{card.id}/edit"
 
       page.attach_file(:card_avatar, 'spec/support/help.png')
-      click_button 'Сохранить'
+      click_button I18n.t('forms.save')
 
       card.reload
       expect(card.avatar_file_name).to be_present

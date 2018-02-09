@@ -1,11 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Юзеры</h1>
+<h1><%= t('app.users') %></h1>
 
 <table class="table">
   <thead>
     <tr>
-      <th>Мыло</th>
+      <th><%= t('users.email') %></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,9 +14,9 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user.email %></td>
-        <td><%= link_to 'Детали', user %></td>
-        <td><%= link_to 'Изменить', edit_user_path(user) %></td>
-        <td><%= link_to 'Удалить', user, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+        <td><%= link_to t('open'), user %></td>
+        <td><%= link_to t('edit'), edit_user_path(user) %></td>
+        <td><%= link_to t('destroy'), user, method: :delete, data: { confirm: t('sure') } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +24,4 @@
 
 <br>
 
-<%= link_to 'Новый юзер', new_user_path %>
+<%= link_to t('users.new'), new_user_path %>

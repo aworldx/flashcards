@@ -1,9 +1,9 @@
 <%= simple_form_for [@deck, @card], html: { class: 'form-horizontal' } do |f| %>
-  <%= f.association :deck,  label: 'Колода' %>
-  <%= f.input :original_text, label: 'Текст' %>
-  <%= f.input :translated_text, label: 'Перевод' %>
-  <%= f.input :review_date, label: 'Дата ревью' %>
+  <%= f.association :deck,  label: t('cards.deck') %>
+  <%= f.input :original_text, label: t('cards.original_text') %>
+  <%= f.input :translated_text, label: t('cards.translated_text') %>
+  <%= f.input :review_date, label: t('cards.review_date') %>
   <%= image_tag @card.avatar.url(:medium), id: 'avatar' if @card.avatar? %>
   <%= f.input :avatar, as: :file %>
-  <%= f.button :submit, 'Сохранить', class: "btn btn-primary" %>
+  <%= f.button :submit, t('forms.save'), class: "btn btn-primary" %>
 <% end %>

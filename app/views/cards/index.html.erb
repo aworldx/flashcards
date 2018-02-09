@@ -1,4 +1,4 @@
-<h3>Все карточки из колоды <%= @deck.title %></h3>
+<h3><%= "#{ t('cards.cards_list_from_deck_title') } #{ @deck.title }" %></h3>
 <% @cards.each_slice(4) do |cards_row| %>
   <div class="row mb-2">
     <% cards_row.each do |card| %>
@@ -14,16 +14,16 @@
             </p>
           </div>
           <div class="card-footer text-muted">
-            <%= link_to 'Открыть', card_path(card) %>
-            <%= link_to 'Изменить', edit_card_path(card) %>
-            <%= link_to 'Удалить', card_path(card),
+            <%= link_to t('forms.open'), card_path(card) %>
+            <%= link_to t('forms.edit'), edit_card_path(card) %>
+            <%= link_to t('forms.destroy'), card_path(card),
               method: :delete,
-              data: { confirm: 'Вы уверены?' } %>
+              data: { confirm: t('forms.sure') } %>
           </div>
         </div>
       </div>
     <% end %>
   </div>
 <% end %>
-<%= link_to 'Добавить карточку в колоду', new_deck_card_path(@deck) %><br>
-<%= link_to 'К списку колод', decks_path(@deck) %>
+<%= link_to t('cards.create'), new_deck_card_path(@deck) %><br>
+<%= link_to t('cards.back_to_deck_list'), decks_path(@deck) %>

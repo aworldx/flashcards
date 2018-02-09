@@ -1,12 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Колоды</h1>
+<h1><%= t('cards.decks') %></h1>
 
 <table class="table">
   <thead>
     <tr>
-      <th>Название</th>
-      <th>Текущая</th>
+      <th><%= t('cards.deck_title') %></th>
+      <th><%= t('cards.current') %></th>
       <th colspan="4"></th>
     </tr>
   </thead>
@@ -16,11 +16,11 @@
       <tr>
         <td><%= deck.title %></td>
         <td><%= check_box_tag('current_deck', '', current_user.current_deck == deck, disabled: true) %></td>
-        <td><%= link_to 'Детали', deck %></td>
-        <td><%= link_to 'Изменить', edit_deck_path(deck) %></td>
-        <td><%= link_to 'Удалить', deck, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+        <td><%= link_to t('forms.open'), deck %></td>
+        <td><%= link_to t('forms.edit'), edit_deck_path(deck) %></td>
+        <td><%= link_to t('forms.destroy'), deck, method: :delete, data: { confirm: t('forms.sure') } %></td>
         <% unless current_user.current_deck == deck %>
-          <td><%= link_to 'Текущая', set_current_deck_user_path(current_user, deck), method: :post %></td>
+          <td><%= link_to t('cards.current'), set_current_deck_user_path(current_user, deck), method: :post %></td>
         <% end %>
       </tr>
     <% end %>
@@ -29,5 +29,5 @@
 
 <br>
 
-<%= link_to 'Сбросить текущую колоду', remove_current_deck_user_path(current_user), method: :post %><br>
-<%= link_to 'Новая колода', new_deck_path %>
+<%= link_to t('cards.current_deck_reset'), remove_current_deck_user_path(current_user), method: :post %><br>
+<%= link_to t('cards.add_new_deck'), new_deck_path %>

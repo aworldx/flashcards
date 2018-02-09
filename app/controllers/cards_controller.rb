@@ -12,7 +12,7 @@ class CardsController < ApplicationController
   def new
     if params[:deck_id].nil?
       redirect_to decks_url
-      flash[:error] = 'Карточка добавляется из колоды'
+      flash[:error] = t('notice.add_card_not_from_deck_error')
     else
       @deck = current_user.decks.find(params[:deck_id])
       @card = @deck.cards.build
@@ -27,7 +27,7 @@ class CardsController < ApplicationController
 
     if @card.save
       redirect_to deck_cards_path(@deck)
-      flash[:notice] = 'Новая карточка добавлена'
+      flash[:notice] = t('notice.new_card')
     else
       render 'new'
     end
@@ -54,13 +54,13 @@ class CardsController < ApplicationController
     if check_result <=1
       @card.on_success_check
       @card.set_review_date
-      misprint = "Опечатка! Вы написали: #{card_params[:user_text]} Правильно так: #{@card.original_text}" if check_result == 1
+      misprint = t('notice.misprint', user_text: card_params[:user_text], original_text: @card.original_text) if check_result == 1
 
-      msg = 'Бинго!'
+      msg = t('cards.successfull_check')
     else
       @card.on_fail_check
 
-      msg = 'А вот и не угадал'
+      msg = t('cards.failed_check')
     end
 
     @card.save

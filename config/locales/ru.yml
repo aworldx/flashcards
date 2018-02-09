@@ -1,0 +1,65 @@
+ru:
+  app:
+    title: Флэшкарточкер
+    locale: Язык
+    user: Пользователь
+    users: Пользователи
+    desc: "Первый в мире удобный сервис для изучения иностранных слов"
+  users:
+    authentication: Аутентификация
+    registration: Регистрация
+    profile: Профиль
+    profile_change: "Изменить профиль"
+    user: Пользователь
+    email: Мыло
+    pass: Пароль
+    pass_confirm: "Подтверждение пароля"
+    new: "Новый юзер"
+    log_in: Вход
+    log_out: Выход
+  cards:
+    deck: Колода
+    decks: Колоды
+    card: Карточка
+    original_text: "Оригинальный текст"
+    translated_text: Перевод
+    review_date: "Дата проверки"
+    edit_page_title: "Редактирование карточки"
+    back_to_cards_list: "Назад к списку карточек"
+    cards_list_from_deck_title: "Все карточки из колоды"
+    create: "Добавить новую карточку в колоду"
+    back_to_deck_list: "Назад к списку колод"
+    new_card_title: "Новая карточка"
+    deck_title: Название
+    deck_edit_title: "Редактирование колоды"
+    current: "Текущая"
+    add_new_deck: "Добавить новую колоду"
+    current_deck_reset: "Сбросить текущую колоду"
+    new_deck_title: "Новая колода"
+    successfull_check: "Бинго!"
+    failed_check: "Не угадал, попробуй еще"
+  forms:
+    save: Сохранить
+    open: Открыть
+    destroy: Удалить
+    edit: Изменить
+    back: Назад
+    sure: "Вы уверены?"
+  home:
+    try_translate: "Переведи карточку"
+    check_translate: "Проверить"
+  notice:
+    login_first: "Сначала выполните вход"
+    add_card_not_from_deck_error: "Карточка должна добавляться из колоды"
+    new_card: "Новая карточка добавлена"
+    misprint: "Опечатка! Вы написали: %{user_text} Правильно так: %{original_text}"
+    new_deck: "Новая колода добавлена"
+    login_successful: "Вы успешно выполнили вход"
+    login_failed: "Попытка входа не удалась"
+    logged_out: "Вы вышли из приложения"
+    user_was_successfully_created: "Пользователь был успешно создан"
+    user_was_successfully_updated: "Пользователь успешно изменен"
+    user_was_successfully_destroyed: "Пользователь был удален"
+    current_deck_was_successfully_changed: "Текущая колода была успешно изменена"
+    deck_was_not_found: "Колода не найдена"
+    you_doesnt_have_current_deck_now: "Теперь у вас нет активной колоды"

@@ -19,19 +19,19 @@ describe 'user authentication', type: :feature do
       fill_in :user_email, with: user.email
       fill_in :user_password, with: user_password
 
-      click_button 'Вход'
+      click_button 'user_log_in_btn'
     end
 
     context 'with correct password' do
       let(:user_password) { pass }
       it "cans see notice 'Login successful'" do
-        expect(page).to have_content 'Login successful'
+        expect(page).to have_content I18n.t('notice.login_successful')
       end
 
       context 'when authenticated user try to logout' do
         it "cans see notice 'Logged out!'" do
-          click_link 'Выйти'
-          expect(page).to have_content 'Logged out!'
+          click_link 'user_log_out_btn'
+          expect(page).to have_content I18n.t('notice.logged_out')
         end
       end
     end
@@ -39,7 +39,7 @@ describe 'user authentication', type: :feature do
     context 'with wrong password' do
       let(:user_password) { 'wrong_pass' }
       it "cans see notice 'Login failed'" do
-        expect(page).to have_content 'Login failed'
+        expect(page).to have_content I18n.t('notice.login_failed')
       end
     end
   end

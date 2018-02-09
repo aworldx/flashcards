@@ -1,6 +1,6 @@
 require 'sidekiq/web'
 
-Rails.application.routes.draw do
+Rails.application.routes.draw do 
   root to: 'home#index'
   get 'index', to: 'home#index'
 
@@ -14,8 +14,8 @@ Rails.application.routes.draw do
 
   resources :users do
     member do
-       post 'set_current_deck(/:deck_id)', action: 'set_current_deck', as: 'set_current_deck'
-       post 'remove_current_deck', action: 'remove_current_deck', as: 'remove_current_deck'
+      post 'set_current_deck(/:deck_id)', action: 'set_current_deck', as: 'set_current_deck'
+      post 'remove_current_deck', action: 'remove_current_deck', as: 'remove_current_deck'
     end
   end
 
