@@ -1,12 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<h1><%= t('cards.decks') %></h1>
+<h1><%= t('.title') %></h1>
 
 <table class="table">
   <thead>
     <tr>
-      <th><%= t('cards.deck_title') %></th>
-      <th><%= t('cards.current') %></th>
+      <th><%= Deck.human_attribute_name('title') %></th>
+      <th><%= Deck.human_attribute_name('current') %></th>
       <th colspan="4"></th>
     </tr>
   </thead>
@@ -20,7 +20,7 @@
         <td><%= link_to t('forms.edit'), edit_deck_path(deck) %></td>
         <td><%= link_to t('forms.destroy'), deck, method: :delete, data: { confirm: t('forms.sure') } %></td>
         <% unless current_user.current_deck == deck %>
-          <td><%= link_to t('cards.current'), set_current_deck_user_path(current_user, deck), method: :post %></td>
+          <td><%= link_to t('.set_current'), set_current_deck_user_path(current_user, deck), method: :post %></td>
         <% end %>
       </tr>
     <% end %>
@@ -29,5 +29,5 @@
 
 <br>
 
-<%= link_to t('cards.current_deck_reset'), remove_current_deck_user_path(current_user), method: :post %><br>
-<%= link_to t('cards.add_new_deck'), new_deck_path %>
+<%= link_to t('.current_deck_reset'), remove_current_deck_user_path(current_user), method: :post %><br>
+<%= link_to t('.new'), new_deck_path %>

@@ -2,23 +2,34 @@ en:
   app:
     title: Flashcards
     desc: "First amazing cards translate service"
+  activerecord:
+    models:
+      deck:
+        other: Decks
   forms:
     sure: "Are you shure?"
     save: Save
   cards:
-    original_text: "Original text"
-    translated_text: "Translated text"
-    review_date: "Review date"
-    edit_page_title: "Card editing"
-    back_to_cards_list: "Back to cards list"
-    cards_list_from_deck_title: "All cards from deck"
-    create: "Add new card to deck"
-    back_to_deck_list: "Back to decks list"
-    new_card_title: "New card"
-    deck_title: "Deck's title"
-    deck_edit_title: "Deck edit"
-    successfull_check: "Bingo!"
-    failed_check: "Oops, try another one"
+    new:
+      title: "New card"
+    index:
+      title: "All cards from deck"
+      create: "Add new card to deck"
+      to_deck_list: "Back to decks list"
+    edit:
+      title: "Edit card"
+    show:
+      to_cards_list: "Back to deck's cards list"
+  decks:
+    new:
+      title: "New deck"
+    index:
+      title: "Decks list"
+      current_deck_reset: "Reset current deck"
+      new: "Add new deck"
+      set_current: "Set current"
+    edit:
+      title: "Edit deck"
   home:
     try_translate: "Try to translate this"
     check_translate: Check
@@ -28,3 +39,10 @@ en:
     new_card: "New card was added"
     misprint: "Misprint! You wrote: \"%{user_text}\" correctly: \"%{original_text}\""
     new_deck: "New deck was added"
+  time:
+    am: am
+    formats:
+      default: "%a, %d %b %Y %H:%M:%S %z"
+      long: "%B %d, %Y %H:%M"
+      short: "%d %b %H:%M"
+    pm: pm

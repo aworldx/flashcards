@@ -1,11 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong><%= "#{ t('cards.deck_title') }:" %></strong>
+  <strong><%= "#{ Card.human_attribute_name('title') }:" %></strong>
   <%= @deck.title %>
 </p>
 
-<%= link_to t('cards.cards_list_from_deck_title'), deck_cards_path(@deck) %><br>
-<%= link_to t('cards.create'), new_deck_card_path(@deck) %><br>
+<%= link_to t('.to_decks_card_list'), deck_cards_path(@deck) %><br>
+<%= link_to t('.create'), new_deck_card_path(@deck) %><br>
 <%= link_to t('forms.edit'), edit_deck_path(@deck) %><br>
 <%= link_to t('forms.back'), decks_path %>
