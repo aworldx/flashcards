@@ -1,33 +1,48 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  app:
+    title: Flashcards
+    desc: "First amazing cards translate service"
+  activerecord:
+    models:
+      deck:
+        other: Decks
+  forms:
+    sure: "Are you shure?"
+    save: Save
+  cards:
+    new:
+      title: "New card"
+    index:
+      title: "All cards from deck"
+      create: "Add new card to deck"
+      to_deck_list: "Back to decks list"
+    edit:
+      title: "Edit card"
+    show:
+      to_cards_list: "Back to deck's cards list"
+  decks:
+    new:
+      title: "New deck"
+    index:
+      title: "Decks list"
+      current_deck_reset: "Reset current deck"
+      new: "Add new deck"
+      set_current: "Set current"
+    edit:
+      title: "Edit deck"
+  home:
+    try_translate: "Try to translate this"
+    check_translate: Check
+  notice:
+    login_first: "Please login first"
+    add_card_not_from_deck_error: "You can add card to deck only"
+    new_card: "New card was added"
+    misprint: "Misprint! You wrote: \"%{user_text}\" correctly: \"%{original_text}\""
+    new_deck: "New deck was added"
+  time:
+    am: am
+    formats:
+      default: "%a, %d %b %Y %H:%M:%S %z"
+      long: "%B %d, %Y %H:%M"
+      short: "%d %b %H:%M"
+    pm: pm

@@ -1,11 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Название колоды:</strong>
+  <strong><%= "#{ Card.human_attribute_name('title') }:" %></strong>
   <%= @deck.title %>
 </p>
 
-<%= link_to 'Открыть карточки колоды', deck_cards_path(@deck) %><br>
-<%= link_to 'Добавить карточку в колоду', new_deck_card_path(@deck) %><br>
-<%= link_to 'Изменить', edit_deck_path(@deck) %><br>
-<%= link_to 'Назад', decks_path %>
+<%= link_to t('.to_decks_card_list'), deck_cards_path(@deck) %><br>
+<%= link_to t('.create'), new_deck_card_path(@deck) %><br>
+<%= link_to t('forms.edit'), edit_deck_path(@deck) %><br>
+<%= link_to t('forms.back'), decks_path %>

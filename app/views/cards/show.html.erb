@@ -1,23 +1,23 @@
 <p>
-  <strong>Текст:</strong>
+  <strong><%= "#{ Card.human_attribute_name('original_text')}:" %></strong>
   <%= @card.original_text %>
 </p>
 
 <p>
-  <strong>Перевод:</strong>
+  <strong><%= "#{ Card.human_attribute_name('translated_text') }:" %></strong>
   <%= @card.translated_text %>
 </p>
 
 <p>
-  <strong>Дата ревью:</strong>
-  <%= @card.review_date %>
+  <strong><%= "#{ Card.human_attribute_name('review_date') }:" %></strong>
+  <%= l(@card.review_date, format: :long) %>
 </p>
 
 <%= image_tag @card.avatar.url(:medium), id: 'avatar' if @card.avatar? %>
 <br><br>
 
-<%= link_to 'К списку карточек', deck_cards_path(@card.deck_id), class: 'btn btn-primary' %>
-<%= link_to 'Изменить', edit_card_path, class: 'btn btn-primary' %>
-<%= link_to 'Удалить', card_path,
+<%= link_to t('.to_cards_list'), deck_cards_path(@card.deck_id), class: 'btn btn-primary' %>
+<%= link_to t('forms.edit'), edit_card_path, class: 'btn btn-primary' %>
+<%= link_to t('forms.destroy'), card_path,
               method: :delete,
-              data: { confirm: 'Вы уверены?' }, class: 'btn btn-primary' %>
+              data: { confirm: t('forms.sure') }, class: 'btn btn-primary' %>

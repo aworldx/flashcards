@@ -16,24 +16,24 @@
 
     <ul class="nav justify-content-center">
       <li class="nav-item">
-        <%= link_to 'Флэшкарточкер', root_path, class: 'nav-link active' %>
+        <%= link_to t('app.title'), root_path, class: 'nav-link active' %>
       </li>
       <li class="nav-item">
-        <%= link_to 'Колоды', decks_path, class: 'nav-link' %>
+        <%= link_to Deck.model_name.human(count: 2), decks_path, class: 'nav-link' %>
       </li>
       <% if current_user %>
         <li class="nav-item">
-          <%= link_to "Изменить профиль", edit_user_path(current_user.id), class: 'nav-link' %>
+          <%= link_to t('users.profile_change'), edit_user_path(current_user.id), class: 'nav-link' %>
         </li>
         <li class="nav-item">
-          <%= link_to "Выйти", :logout, method: :post, class: 'nav-link' %>
+          <%= link_to t('users.log_out'), :logout, method: :post, id: 'user_log_out_btn', class: 'nav-link' %>
         </li>
       <% else %>
         <li class="nav-item">
-          <%= link_to "Зарегистрироваться", new_user_path, class: 'nav-link' %>
+          <%= link_to t('users.registration'), new_user_path, class: 'nav-link' %>
         </li>
         <li class="nav-item">
-          <%= link_to "Войти", :login, class: 'nav-link' %>
+          <%= link_to t('users.log_in'), :login, id: 'user_log_in_btn', class: 'nav-link' %>
         </li>
       <% end %>
     </ul>
@@ -41,7 +41,7 @@
     <section id="container">
 
       <header class="clearfix">
-        <h1>Флэшкарточкер</h1>
+        <h1><%= t('app.title') %></h1>
       </header>
 
       <section>
@@ -49,5 +49,16 @@
       </section>
 
     </section>
+
+    <% if current_user.nil? %>
+      <ul class="nav fixed-bottom justify-content-center">
+        <% I18n.available_locales.each do |locale| %>
+          <li class="nav-item">
+            <%= link_to locale, { locale: locale }, class: 'nav-link' %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+
   </body>
 </html>

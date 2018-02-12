@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         auto_login(@user)
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to @user, notice: t('notice.user_was_successfully_created') }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to @user, notice: t('notice.user_was_successfully_updated') }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -46,7 +46,7 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to users_url, notice: t('notice.user_was_successfully_destroyed') }
       format.json { head :no_content }
     end
   end
@@ -56,9 +56,9 @@ class UsersController < ApplicationController
 
     if deck.present?
       current_user.update(current_deck: deck)
-      msg = 'Текущая колода была успешно изменена.'
+      msg = t('notice.current_deck_was_successfully_changed')
     else
-      msg = 'Колода не найдена!'
+      msg = t('notice.deck_was_not_found')
     end
 
     respond_to do |format|
@@ -71,7 +71,7 @@ class UsersController < ApplicationController
     current_user.update(current_deck: nil)
 
     respond_to do |format|
-      format.html { redirect_to decks_path, notice: 'Теперь у вас нет активной колоды' }
+      format.html { redirect_to decks_path, notice: t('notice.you_doesnt_have_current_deck_now') }
       format.json { head :no_content }
     end
   end
@@ -83,6 +83,6 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation)
+      params.require(:user).permit(:email, :password, :password_confirmation, :locale)
     end
 end

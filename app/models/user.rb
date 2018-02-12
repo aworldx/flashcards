@@ -15,6 +15,7 @@ class User < ApplicationRecord
   }
 
   validates :email, uniqueness: true
+  validates :locale, presence: true
 
   scope :with_pending_cards, lambda {
     joins(decks: :cards).where('cards.review_date <= ?', Time.now).group('id')

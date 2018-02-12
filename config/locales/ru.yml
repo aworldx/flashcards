@@ -1,0 +1,144 @@
+ru:
+  app:
+    title: Флэшкарточкер
+    locale: Язык
+    # user: Пользователь
+    # users: Пользователи
+    desc: "Первый в мире удобный сервис для изучения иностранных слов"
+  activerecord:
+    models:
+      user: Пользователь
+      card: Карточка
+      deck:
+        one: Колода
+        other: Колоды
+    attributes:
+      deck:
+        title: "Название колоды"
+        current: "Текущая?"
+      card:
+        original_text: "Оригинальный текст"
+        translated_text: "Перевод"
+        review_date: "Дата проверки карточки"
+        deck: "Колода"
+  users:
+    authentication: Аутентификация
+    registration: Регистрация
+    profile: Профиль
+    profile_change: "Изменить профиль"
+    user: Пользователь
+    email: Мыло
+    pass: Пароль
+    pass_confirm: "Подтверждение пароля"
+    new: "Новый юзер"
+    log_in: Вход
+    log_out: Выход
+  cards:
+    new:
+      title: "Новая карточка"
+    index:
+      title: "Все карточки из колоды"
+      create: "Добавить новую карточку в колоду"
+      to_deck_list: "К списку колод"
+    edit:
+      title: "Редактирование карточки"
+    show:
+      to_cards_list: "К списку карточек"
+  decks:
+    new:
+      title: "Новая колода"
+    index:
+      title: "Список колод"
+      current_deck_reset: "Сбросить текущую колоду"
+      new: "Добавить новую колоду"
+      set_current: "Установить текущей"
+    edit:
+      title: "Редактирование колоды"
+    show:
+      to_decks_card_list: "К списку карточек текущей колоды"
+      create: "Добавить новую карточку в колоду"
+  forms:
+    save: Сохранить
+    open: Открыть
+    destroy: Удалить
+    edit: Изменить
+    back: Назад
+    sure: "Вы уверены?"
+  home:
+    try_translate: "Переведи карточку"
+    check_translate: "Проверить"
+  notice:
+    login_first: "Сначала выполните вход"
+    add_card_not_from_deck_error: "Карточка должна добавляться из колоды"
+    new_card: "Новая карточка добавлена"
+    misprint: "Опечатка! Вы написали: %{user_text} Правильно так: %{original_text}"
+    new_deck: "Новая колода добавлена"
+    login_successful: "Вы успешно выполнили вход"
+    login_failed: "Попытка входа не удалась"
+    logged_out: "Вы вышли из приложения"
+    user_was_successfully_created: "Пользователь был успешно создан"
+    user_was_successfully_updated: "Пользователь успешно изменен"
+    user_was_successfully_destroyed: "Пользователь был удален"
+    current_deck_was_successfully_changed: "Текущая колода была успешно изменена"
+    deck_was_not_found: "Колода не найдена"
+    you_doesnt_have_current_deck_now: "Теперь у вас нет активной колоды"
+  time:
+    am: утра
+    formats:
+      default: "%a, %d %b %Y, %H:%M:%S %z"
+      long: "%d %B %Y, %H:%M"
+      short: "%d %b, %H:%M"
+    pm: вечера
+  date:
+    abbr_day_names:
+    - Вс
+    - Пн
+    - Вт
+    - Ср
+    - Чт
+    - Пт
+    - Сб
+    abbr_month_names:
+    -
+    - янв.
+    - февр.
+    - марта
+    - апр.
+    - мая
+    - июня
+    - июля
+    - авг.
+    - сент.
+    - окт.
+    - нояб.
+    - дек.
+    day_names:
+    - воскресенье
+    - понедельник
+    - вторник
+    - среда
+    - четверг
+    - пятница
+    - суббота
+    formats:
+      default: "%d.%m.%Y"
+      long: "%-d %B %Y"
+      short: "%-d %b"
+    month_names:
+    -
+    - января
+    - февраля
+    - марта
+    - апреля
+    - мая
+    - июня
+    - июля
+    - августа
+    - сентября
+    - октября
+    - ноября
+    - декабря
+    order:
+    - :day
+    - :month
+    - :year

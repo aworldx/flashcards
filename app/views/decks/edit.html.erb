@@ -1,6 +1,6 @@
-<h1>Изменить колоду</h1>
+<h1><%= t('.title') %></h1>
 
 <%= render 'form', deck: @deck %>
 
-<%= link_to 'Детали', @deck %> |
-<%= link_to 'Назад', decks_path %>
+<%= link_to t('forms.edit'), @deck %> |
+<%= link_to t('forms.back'), decks_path %>

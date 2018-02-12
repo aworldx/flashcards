@@ -77,3 +77,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'rails_12factor', group: :production
 gem 'whenever', require: false
 gem 'sidekiq'
+gem 'http_accept_language'

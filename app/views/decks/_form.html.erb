@@ -1,5 +1,5 @@
 <%= simple_form_for(@deck) do |f| %>
   <%= f.error_notification %>
-  <%= f.input :title, label: 'Название' %>
-  <%= f.button :submit, 'Сохранить' %>
+  <%= f.input :title, label: Card.human_attribute_name('title') %>
+  <%= f.button :submit, t('forms.save') %>
 <% end %>
