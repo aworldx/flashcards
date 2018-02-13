@@ -23,9 +23,9 @@ RSpec.describe CardsController, type: :controller do
         try_translate(card, 16.days, 'meat')
         # 2.9 * 16
         try_translate(card, 46.days, 'meat')
-        #2.9 * 46
+        # 2.9 * 46
         try_translate(card, 133.days, 'meaG')
-        #2.76 * 133
+        # 2.76 * 133
         try_translate(card, 367.days, 'maeG')
       end
     end

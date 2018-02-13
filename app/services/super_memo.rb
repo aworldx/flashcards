@@ -28,7 +28,7 @@ class SuperMemo
   def e_factor
     e_factor = @card.e_factor + (0.1 - (5 - @quality) * (0.08 + (5 - @quality) * 0.02))
     return e_factor if e_factor >= 1.3
-    return 1.3
+    1.3
   end
 
   def response_quality
@@ -37,6 +37,6 @@ class SuperMemo
   end
 
   def misprint_count
-    misprint_count = DamerauLevenshtein.distance(@card.original_text.downcase, @user_text.downcase)
+    DamerauLevenshtein.distance(@card.original_text.downcase, @user_text.downcase)
   end
 end
