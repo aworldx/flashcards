@@ -50,20 +50,15 @@ class CardsController < ApplicationController
   def check_translate
     set_card
 
-    check_result = @card.misprint_count(card_params[:user_text])
-    if check_result <=1
-      @card.on_success_check
-      @card.set_review_date
-      misprint = t('notice.misprint', user_text: card_params[:user_text], original_text: @card.original_text) if check_result == 1
+    sm = SuperMemo.new(@card, card_params[:user_text])
+    sm.set_review_date
 
-      msg = t('cards.successfull_check')
+    if sm.quality > 2
+      msg = t('.successfull_check')
+      misprint = t('notice.misprint', user_text: card_params[:user_text], original_text: @card.original_text) if sm.quality < 5
     else
-      @card.on_fail_check
-
-      msg = t('cards.failed_check')
+      msg = t('.failed_check')
     end
-
-    @card.save
 
     flash[:notice] = msg
     redirect_to root_path(misprint: misprint)

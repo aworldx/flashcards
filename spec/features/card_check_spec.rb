@@ -38,7 +38,7 @@ describe 'Card checking', type: :feature do
       let(:user_text) { card.original_text }
 
       it "can see 'Bingo' after translate btn push" do
-        expect(page).to have_content I18n.t('cards.successfull_check')
+        expect(page).to have_content I18n.t('cards.check_translate.successfull_check')
       end
     end
 
@@ -46,7 +46,7 @@ describe 'Card checking', type: :feature do
       let(:user_text) { 'smthng' }
 
       it "can see fail message" do
-        expect(page).to have_content I18n.t('cards.failed_check')
+        expect(page).to have_content I18n.t('cards.check_translate.failed_check')
       end
     end
 
@@ -54,7 +54,7 @@ describe 'Card checking', type: :feature do
       let(:user_text) { 'Hello owrld' }
 
       it "can see 'Bingo' after translate btn push" do
-        expect(page).to have_content I18n.t('cards.successfull_check')
+        expect(page).to have_content I18n.t('cards.check_translate.successfull_check')
       end
     end
   end
