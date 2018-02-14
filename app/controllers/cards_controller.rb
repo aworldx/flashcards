@@ -50,18 +50,15 @@ class CardsController < ApplicationController
   def check_translate
     set_card
 
-    sm = SuperMemo.new(@card, card_params[:user_text])
-    sm.set_review_date
+    checker = CardChecker.new(@card)
+    translated_text = card_params[:user_text]
 
-    if sm.quality > 2
-      msg = t('.successfull_check')
-      misprint = t('notice.misprint', user_text: card_params[:user_text], original_text: @card.original_text) if sm.quality < 5
+    if checker.call(translated_text)
+      flash[:notice] = checker.message
+      redirect_to root_path
     else
-      msg = t('.failed_check')
+      redirect_to root_path, status: :internal_server_error
     end
-
-    flash[:notice] = msg
-    redirect_to root_path(misprint: misprint)
   end
 
   private
