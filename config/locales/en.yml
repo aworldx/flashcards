@@ -9,6 +9,9 @@ en:
   forms:
     sure: "Are you shure?"
     save: Save
+  users:
+    log_in: "Log in"
+    log_out: "Log out"
   cards:
     new:
       title: "New card"
