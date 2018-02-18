@@ -12,6 +12,7 @@ en:
   users:
     log_in: "Log in"
     log_out: "Log out"
+    authentication: Authentication
   cards:
     new:
       title: "New card"

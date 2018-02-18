@@ -53,12 +53,10 @@ class CardsController < ApplicationController
     checker = CardChecker.new(@card)
     translated_text = card_params[:user_text]
 
-    if checker.call(translated_text)
-      flash[:notice] = checker.message
-      redirect_to root_path
-    else
-      redirect_to root_path, status: :internal_server_error
-    end
+    checker.call(translated_text)
+
+    flash[:notice] = checker.message
+    redirect_to root_path
   end
 
   private

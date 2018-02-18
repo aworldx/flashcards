@@ -10,7 +10,7 @@ describe 'user authentication', type: :feature do
 
   context 'when not authenticated user visits root path' do
     it 'cans see log in form' do
-      expect(page).to have_content 'Аутентификация'
+      expect(page).to have_content I18n.t('users.authentication')
     end
   end
 

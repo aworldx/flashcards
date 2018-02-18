@@ -10,7 +10,7 @@ describe 'Card checking', type: :feature do
     fill_in :user_email, with: user.email
     fill_in :user_password, with: pass
 
-    click_button 'Вход'
+    click_button I18n.t('users.log_in')
 
     visit root_url
   end
