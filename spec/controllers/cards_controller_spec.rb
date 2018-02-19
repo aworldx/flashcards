@@ -16,6 +16,13 @@ RSpec.describe CardsController, type: :controller do
 
   context '.check_translate' do
     it 'should redirect to root path with translate result message' do
+      try_translate(card, 1.days, 'meat')
+      expect(response).to redirect_to(root_path)
+      expect(flash[:notice]).to include(I18n.t('cards.check_translate.successfull_check'))
+
+      try_translate(card, 1.days, 'foo')
+      expect(response).to redirect_to(root_path)
+      expect(flash[:notice]).to include(I18n.t('cards.check_translate.failed_check'))
     end
   end
 end
