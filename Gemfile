@@ -78,3 +78,6 @@ gem 'rails_12factor', group: :production
 gem 'whenever', require: false
 gem 'sidekiq'
 gem 'http_accept_language'
+gem 'rollbar'
+gem 'newrelic_rpm'
+

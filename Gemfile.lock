@@ -138,6 +138,7 @@ GEM
     multi_json (1.13.1)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
+    newrelic_rpm (4.8.0.341)
     nio4r (2.2.0)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
@@ -194,6 +195,8 @@ GEM
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
     redis (4.0.1)
+    rollbar (2.15.5)
+      multi_json
     rspec-core (3.7.1)
       rspec-support (~> 3.7.0)
     rspec-expectations (3.7.0)
@@ -291,6 +294,7 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)
+  newrelic_rpm
   paperclip!
   pg (~> 0.18)
   puffly
@@ -298,6 +302,7 @@ DEPENDENCIES
   rails (~> 5.1.4)
   rails-controller-testing
   rails_12factor
+  rollbar
   rspec-rails
   sass-rails (~> 5.0)
   selenium-webdriver
