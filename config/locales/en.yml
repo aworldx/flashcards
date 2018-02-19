@@ -9,6 +9,10 @@ en:
   forms:
     sure: "Are you shure?"
     save: Save
+  users:
+    log_in: "Log in"
+    log_out: "Log out"
+    authentication: Authentication
   cards:
     new:
       title: "New card"
@@ -20,6 +24,9 @@ en:
       title: "Edit card"
     show:
       to_cards_list: "Back to deck's cards list"
+    check_translate:
+      successfull_check: "Bingo"
+      failed_check: "Oooops, try again"
   decks:
     new:
       title: "New deck"

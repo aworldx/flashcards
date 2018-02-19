@@ -50,23 +50,13 @@ class CardsController < ApplicationController
   def check_translate
     set_card
 
-    check_result = @card.misprint_count(card_params[:user_text])
-    if check_result <=1
-      @card.on_success_check
-      @card.set_review_date
-      misprint = t('notice.misprint', user_text: card_params[:user_text], original_text: @card.original_text) if check_result == 1
+    checker = CardChecker.new(@card)
+    translated_text = card_params[:user_text]
 
-      msg = t('cards.successfull_check')
-    else
-      @card.on_fail_check
+    checker.call(translated_text)
 
-      msg = t('cards.failed_check')
-    end
-
-    @card.save
-
-    flash[:notice] = msg
-    redirect_to root_path(misprint: misprint)
+    flash[:notice] = checker.message
+    redirect_to root_path
   end
 
   private

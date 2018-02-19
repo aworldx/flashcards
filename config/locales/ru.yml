@@ -44,6 +44,9 @@ ru:
       title: "Редактирование карточки"
     show:
       to_cards_list: "К списку карточек"
+    check_translate:
+      successfull_check: "Бинго"
+      failed_check: "Не угадал"
   decks:
     new:
       title: "Новая колода"
