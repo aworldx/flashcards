@@ -1,3 +1,6 @@
+<% if @message.present? %>
+  <%= @message %>
+<% end %>
 <% if @card.present? %>
   <header>
     <h4 class="alert alert-success"><%= t('home.try_translate') %></h4>

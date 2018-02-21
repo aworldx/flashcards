@@ -20,4 +20,9 @@ class User < ApplicationRecord
   scope :with_pending_cards, lambda {
     joins(decks: :cards).where('cards.review_date <= ?', Time.now).group('id')
   }
+
+  def card_for_review
+    scope = self.current_deck.present? ? self.current_deck : self
+    scope.cards.unreviewed.first
+  end
 end
