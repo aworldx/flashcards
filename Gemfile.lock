@@ -304,7 +304,7 @@ DEPENDENCIES
   rollbar
   rspec-rails
   sass-rails (~> 5.0)
-  selenium-webdriver (~> 2.53.4)
+  selenium-webdriver
   sidekiq
   simple_form
   sorcery

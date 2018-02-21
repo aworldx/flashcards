@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Card checking', js: true, type: :feature do
+describe 'Card checking', type: :feature do
   let(:pass) { 'pass' }
   let(:user) { create(:user, password: pass, password_confirmation: pass) }
 
@@ -27,7 +27,7 @@ describe 'Card checking', js: true, type: :feature do
     end
   end
 
-  context 'when user enters text into translate form' do
+  context 'when user enters text into translate form', js: true do
     let(:card) { user.cards.first }
     before(:each) do
       fill_in :card_user_text, with: user_text
