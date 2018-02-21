@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Card checking', type: :feature do
+describe 'Card checking', js: true, type: :feature do
   let(:pass) { 'pass' }
   let(:user) { create(:user, password: pass, password_confirmation: pass) }
 
