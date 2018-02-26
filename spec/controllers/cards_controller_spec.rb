@@ -15,9 +15,10 @@ RSpec.describe CardsController, type: :controller do
   end
 
   context '.check_translate' do
-    it 'should increase review date' do
+    it 'should increase review date and return another card' do
       try_translate(card, 1.days, 'meat')
-      try_translate(card, 1.days, 'foo')
+      expect(assigns(:card)).not_to eql(card)
+      expect(assigns(:card).original_text).to eql('hello world')
     end
   end
 end
