@@ -54,9 +54,14 @@ class CardsController < ApplicationController
     translated_text = card_params[:user_text]
 
     checker.call(translated_text)
+    
+    @card = current_user.card_for_review
+    @message = checker.message
 
-    flash[:notice] = checker.message
-    redirect_to root_path
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.js { render locals: { card: @card, message: @message  } }
+    end
   end
 
   private
