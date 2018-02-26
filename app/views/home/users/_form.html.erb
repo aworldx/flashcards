@@ -1,8 +1,8 @@
 <%= simple_form_for(@user) do |f| %>
   <%= f.error_notification %>
-  <%= f.input :email, label: t('users.email') %>
-  <%= f.input :password, label: t('users.pass') %>
-  <%= f.input :password_confirmation, label: t('users.pass_confirm') %>
+  <%= f.input :email, label: t('home.users.email') %>
+  <%= f.input :password, label: t('home.users.pass') %>
+  <%= f.input :password_confirmation, label: t('home.users.pass_confirm') %>
   <%= f.input :locale, collection: I18n.available_locales, label: t('app.locale') %>
   <%= f.button :submit, t('forms.save') %>
 <% end %>

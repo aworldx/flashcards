@@ -9,37 +9,39 @@ en:
   forms:
     sure: "Are you shure?"
     save: Save
-  users:
-    log_in: "Log in"
-    log_out: "Log out"
-    authentication: Authentication
-  cards:
-    new:
-      title: "New card"
-    index:
-      title: "All cards from deck"
-      create: "Add new card to deck"
-      to_deck_list: "Back to decks list"
-    edit:
-      title: "Edit card"
-    show:
-      to_cards_list: "Back to deck's cards list"
-    check_translate:
-      successfull_check: "Bingo"
-      failed_check: "Oooops, try again"
-  decks:
-    new:
-      title: "New deck"
-    index:
-      title: "Decks list"
-      current_deck_reset: "Reset current deck"
-      new: "Add new deck"
-      set_current: "Set current"
-    edit:
-      title: "Edit deck"
   home:
-    try_translate: "Try to translate this"
-    check_translate: Check
+    users:
+      log_in: "Log in"
+      log_out: "Log out"
+      authentication: Authentication
+    home:
+      try_translate: "Try to translate this"
+      check_translate: Check
+  dashboard:
+    cards:
+      new:
+        title: "New card"
+      index:
+        title: "All cards from deck"
+        create: "Add new card to deck"
+        to_deck_list: "Back to decks list"
+      edit:
+        title: "Edit card"
+      show:
+        to_cards_list: "Back to deck's cards list"
+      check_translate:
+        successfull_check: "Bingo"
+        failed_check: "Oooops, try again"
+    decks:
+      new:
+        title: "New deck"
+      index:
+        title: "Decks list"
+        current_deck_reset: "Reset current deck"
+        new: "Add new deck"
+        set_current: "Set current"
+      edit:
+        title: "Edit deck"
   notice:
     login_first: "Please login first"
     add_card_not_from_deck_error: "You can add card to deck only"
