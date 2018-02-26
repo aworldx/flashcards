@@ -22,7 +22,7 @@ class User < ApplicationRecord
   }
 
   def card_for_review
-    scope = self.current_deck.present? ? self.current_deck : self
+    scope = current_deck.present? ? current_deck : self
     scope.cards.unreviewed.first
   end
 end
