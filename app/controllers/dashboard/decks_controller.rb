@@ -1,4 +1,4 @@
-class DecksController < ApplicationController
+class Dashboard::DecksController < ApplicationController
   before_action :set_deck, only: [ :show, :edit, :update, :destroy ]
 
   def index

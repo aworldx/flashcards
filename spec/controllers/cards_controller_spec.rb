@@ -5,7 +5,7 @@ RSpec.configure do |c|
   c.include TestHelpers
 end
 
-RSpec.describe CardsController, type: :controller do
+RSpec.describe Dashboard::CardsController, type: :controller do
   let(:user) { create(:user) }
   let(:deck) { create(:deck, user: user) }
   let(:card) { create(:card, original_text: 'meat', translated_text: 'мясо', deck: deck) }

@@ -1,4 +1,4 @@
-class CardsController < ApplicationController
+class Dashboard::CardsController < ApplicationController
   before_action :set_card, only: [:show, :edit, :update, :destroy]
   before_action :set_deck, only: [:index, :new, :create]
 
@@ -54,7 +54,7 @@ class CardsController < ApplicationController
     translated_text = card_params[:user_text]
 
     checker.call(translated_text)
-    
+
     @card = current_user.card_for_review
     @message = checker.message
 

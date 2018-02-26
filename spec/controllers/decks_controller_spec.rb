@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe DecksController, type: :controller do
+RSpec.describe Dashboard::DecksController, type: :controller do
   let(:user1) { create(:user) }
   let(:user2) { create(:user) }
   let(:deck1) { create(:deck, title: 'deck 1', user: user1) }
