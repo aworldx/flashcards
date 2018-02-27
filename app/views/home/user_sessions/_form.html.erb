@@ -1,5 +1,5 @@
 <%= simple_form_for :user, url: user_sessions_path, method: :post do |f| %>
-  <%= f.input :email, label: t('users.email') %>
-  <%= f.input :password, label: t('users.pass') %>
-  <%= f.button :submit, t('users.log_in'), id: 'user_log_in_btn' %>
+  <%= f.input :email, label: t('home.users.email') %>
+  <%= f.input :password, label: t('home.users.pass') %>
+  <%= f.button :submit, t('home.users.log_in'), id: 'user_log_in_btn' %>
 <% end %>

@@ -79,12 +79,12 @@ module Home
 
     private
 
-      def set_user
-        @user = User.find(params[:id])
-      end
+    def set_user
+      @user = User.find(params[:id])
+    end
 
-      def user_params
-        params.require(:user).permit(:email, :password, :password_confirmation, :locale)
-      end
+    def user_params
+      params.require(:user).permit(:email, :password, :password_confirmation, :locale)
+    end
   end
 end

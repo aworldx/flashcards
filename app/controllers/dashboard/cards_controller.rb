@@ -61,7 +61,7 @@ module Dashboard
 
       respond_to do |format|
         format.html { redirect_to root_path }
-        format.js { render locals: { card: @card, message: @message  } }
+        format.js { render locals: { card: @card, message: @message } }
       end
     end
 

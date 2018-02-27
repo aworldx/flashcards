@@ -23,10 +23,10 @@ Rails.application.routes.draw do
     end
 
     resources :user_sessions
-  end
 
-  get 'login', to: 'home/user_sessions#new', as: 'login'
-  post 'logout', to: 'home/user_sessions#destroy', as: 'logout'
+    get 'login', to: 'user_sessions#new', as: 'login'
+    post 'logout', to: 'user_sessions#destroy', as: 'logout'
+  end
 
   mount Sidekiq::Web => '/sidekiq'
 end
