@@ -3,13 +3,13 @@
 <% end %>
 <% if @card.present? %>
   <header>
-    <h4 class="alert alert-success"><%= t('home.try_translate') %></h4>
+    <h4 class="alert alert-success"><%= t('home.home.try_translate') %></h4>
   </header>
   <%= simple_form_for @card, url: check_translate_card_path(@card), method: :post, remote: true do |f| %>
     <%= image_tag @card.avatar.url(:medium), id: 'avatar' if @card.avatar %>
     <%= f.input :translated_text, label: t('cards.translated_text'), :readonly => true %>
     <%= f.input :user_text, label: t('cards.original_text'), input_html: {value: '' } %>
     <%= f.hidden_field :id %>
-    <%= f.button :submit, t('home.check_translate') %>
+    <%= f.button :submit, t('home.home.check_translate') %>
   <% end %>
 <% end %>

@@ -2,8 +2,8 @@ ru:
   app:
     title: Флэшкарточкер
     locale: Язык
-    # user: Пользователь
-    # users: Пользователи
+    user: Пользователь
+    users: Пользователи
     desc: "Первый в мире удобный сервис для изучения иностранных слов"
   activerecord:
     models:
@@ -21,45 +21,50 @@ ru:
         translated_text: "Перевод"
         review_date: "Дата проверки карточки"
         deck: "Колода"
-  users:
-    authentication: Аутентификация
-    registration: Регистрация
-    profile: Профиль
-    profile_change: "Изменить профиль"
-    user: Пользователь
-    email: Мыло
-    pass: Пароль
-    pass_confirm: "Подтверждение пароля"
-    new: "Новый юзер"
-    log_in: Вход
-    log_out: Выход
-  cards:
-    new:
-      title: "Новая карточка"
-    index:
-      title: "Все карточки из колоды"
-      create: "Добавить новую карточку в колоду"
-      to_deck_list: "К списку колод"
-    edit:
-      title: "Редактирование карточки"
-    show:
-      to_cards_list: "К списку карточек"
-    check_translate:
-      successfull_check: "Бинго"
-      failed_check: "Не угадал"
-  decks:
-    new:
-      title: "Новая колода"
-    index:
-      title: "Список колод"
-      current_deck_reset: "Сбросить текущую колоду"
-      new: "Добавить новую колоду"
-      set_current: "Установить текущей"
-    edit:
-      title: "Редактирование колоды"
-    show:
-      to_decks_card_list: "К списку карточек текущей колоды"
-      create: "Добавить новую карточку в колоду"
+  home:
+    users:
+      authentication: Аутентификация
+      registration: Регистрация
+      profile: Профиль
+      profile_change: "Изменить профиль"
+      user: Пользователь
+      email: Мыло
+      pass: Пароль
+      pass_confirm: "Подтверждение пароля"
+      new: "Новый юзер"
+      log_in: Вход
+      log_out: Выход
+    home:
+      try_translate: "Переведи карточку"
+      check_translate: "Проверить"
+  dashboard:
+    cards:
+      new:
+        title: "Новая карточка"
+      index:
+        title: "Все карточки из колоды"
+        create: "Добавить новую карточку в колоду"
+        to_deck_list: "К списку колод"
+      edit:
+        title: "Редактирование карточки"
+      show:
+        to_cards_list: "К списку карточек"
+      check_translate:
+        successfull_check: "Бинго"
+        failed_check: "Не угадал"
+    decks:
+      new:
+        title: "Новая колода"
+      index:
+        title: "Список колод"
+        current_deck_reset: "Сбросить текущую колоду"
+        new: "Добавить новую колоду"
+        set_current: "Установить текущей"
+      edit:
+        title: "Редактирование колоды"
+      show:
+        to_decks_card_list: "К списку карточек текущей колоды"
+        create: "Добавить новую карточку в колоду"
   forms:
     save: Сохранить
     open: Открыть
@@ -67,9 +72,6 @@ ru:
     edit: Изменить
     back: Назад
     sure: "Вы уверены?"
-  home:
-    try_translate: "Переведи карточку"
-    check_translate: "Проверить"
   notice:
     login_first: "Сначала выполните вход"
     add_card_not_from_deck_error: "Карточка должна добавляться из колоды"

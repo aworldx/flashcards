@@ -10,7 +10,7 @@ describe 'upload an image', type: :feature do
     fill_in :user_email, with: user.email
     fill_in :user_password, with: pass
 
-    click_button I18n.t('users.log_in')
+    click_button I18n.t('home.users.log_in')
   end
 
   context 'when user logged in and visit edit card page' do
