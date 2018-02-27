@@ -1,9 +1,6 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
-  root to: 'home/home#index'
-  get 'index', to: 'home/home#index'
-
   scope module: 'dashboard' do
     resources :decks do
       resources :cards, shallow: true do
@@ -15,6 +12,9 @@ Rails.application.routes.draw do
   end
 
   scope module: 'home' do
+    root to: 'home#index'
+    get 'index', to: 'home#index'
+
     resources :users do
       member do
         post 'set_current_deck(/:deck_id)', action: 'set_current_deck', as: 'set_current_deck'
